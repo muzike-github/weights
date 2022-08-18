@@ -18,7 +18,7 @@ def Recursion(C, R, h):
         weight_max = fun.get_min_weight(C)
         print("更新社区:", H, "最小权重为：", weight_max)
     # 剪枝1，对候选集R进行剪枝
-    # R = fun.reduce1(C, R, h, weight_max)
+    R = fun.reduce1(C, R, h, weight_max)
     # 剪枝2，对部分解C进行剪枝
     weight_upperbound = fun.get_weight_upperbound(C, R, h)
     # 如果C的节点数小于h并且候选集R不为空，且当前部分解的理想最小权重大于weight
@@ -28,30 +28,11 @@ def Recursion(C, R, h):
         CAndV = list(set(C).union({v}))
         RExcludeV = list(set(R).difference({v}))
         Recursion(CAndV, RExcludeV, h)
-        Recursion(C, RExcludeV, h)
-# 递归函数
-# def Recursion(C, R, h, weight):
-#     # 如果C满足个数且最小权重更大
-#     if len(C) == h and fun.get_min_weight(C) > weight:
-#         print("更新社区:", "凝聚分数为", weight)
-#         return C,fun.get_min_weight(C)
-#     R = fun.reduce1(C, R, h, weight)
-#     weight_bound = fun.get_weight_upperbound(C, R, h)
-#     # print("C的分数上界：",Upperbound,"score:",score)
-#     # 如果C的节点数小于h并且候选集R不为空
-#     if len(C) < h and len(R) != 0 and weight_bound > weight:
-#         # 从候选集R中选一个节点生成两个分支
-#         v = R[0]
-#         CAndV = list(set(C).union({v}))
-#         RExcludeV = list(set(R).difference({v}))
-#         H1, weight1 = Recursion(CAndV, RExcludeV, h, weight)
-#         H2, weight2 = Recursion(C, RExcludeV,h, weight)
-#         if weight1 >= weight2:
-#             return H1, weight1
-#         else:
-#             return H2,weight2
-#
-#     return None, -1
+        # todo 此处巨坑！！！！！！！！！！！
+        # 注意此处RExcludeV是列表，所以在传入recursion后值会改变，导致后面再次递归调用的时候，
+        # 传入的就不是原来的值，而是删减后的值
+        RExcludeV2=list(set(R).difference({v}))
+        Recursion(C, RExcludeV2, h)
 
 
 # 主算法

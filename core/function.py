@@ -57,7 +57,7 @@ class Function:
         return min(weights)
 
     # 计算权重分数用以启发式算法中选取节点
-    def weight_score(self, C,R):
+    def weight_score(self, C, R):
         copyC = C.copy()  # 用copyC 代替C的所有操作,否则求完连接分数后C会改变
         scoreDict = {}  # 字典保存R中每个节点的连接分数
         # R = []  # todo: 候选集，此处可以优化
@@ -107,7 +107,7 @@ class Function:
         while len(H) < h:
             # 找出G\H中连接分数最大的节点V*
             R = list(set(self.G.nodes).difference(set(H)))
-            soreDict = self.weight_score(H,R)
+            soreDict = self.weight_score(H, R)
             # print(soreDict)
             scoreMaxNode = max(soreDict, key=soreDict.get)
             H.append(scoreMaxNode)  # S=S∪{V*}
@@ -120,37 +120,37 @@ class Function:
     # 缩减规则1（对R中节点进行修剪）
     def reduce1(self, C, R, h, min_weight):
         RCopy = R.copy()  # 利用copy数组循环，去改变
+        if C==[256,208]:
+            print("ceshi")
         for i in RCopy:
             CAndI = list(set(C).union({i}))
             CAndIGraph = nx.subgraph(self.G, CAndI)  # 图C∪{i}
             CAndRGraph = nx.subgraph(self.G, list(set(C).union(set(R))))  # 图C∪R
             RGraph = nx.subgraph(self.G, R)  # 图R
-            # 首先要看该节点是否与部分解C连通（）
-            connected = False
-            for t in C:
-                if nx.has_path(CAndIGraph, i, t):
-                    connected = True
-            # 如果该节点与C中每一个节点都不连通，删除之
-            if not connected:
-                R.remove(i)
-                continue
+            # 首先要看该节点是否与部分解C连通（注意此处是CAndRGraph）
+            # connected = False
+            # for t in C:
+            #     if nx.has_path(CAndRGraph, i, t):
+            #         connected = True
+            # # 如果该节点与C中每一个节点都不连通，删除之
+            # if not connected:
+            #     R.remove(i)
+            #     continue
             # max_node_count表示该节点最多可能再和h - len(C) - 1个节点相连
             max_node_count = h - len(C) - 1
             # 列表存储节点i的邻居边
             neighbor_weight_list = []
-            # 计算i在图C∪R中的最大权值
-            weight1 = get_weight(CAndRGraph, i)
             # 计算i在图C∪{i}中的权值（再加上几条最大的邻居边）
             weight2 = get_weight(CAndIGraph, i)
             # 遍历i在图R中的所有邻居
             for j in nx.neighbors(RGraph, i):
                 neighbor_weight_list.append(RGraph.get_edge_data(i, j)['weight'])
             # 排序后取最大的前max_node_count个,或者不够就将剩下的都加上
-            sorted(neighbor_weight_list, reverse=True)
+            neighbor_weight_list.sort(reverse=True)
             for t in range(0, min(max_node_count, len(neighbor_weight_list))):
                 weight2 += neighbor_weight_list[t]
-            # 取二者最小值和当前社区最小值比较，如果小于就删去
-            if min(weight1, weight2) < min_weight:
+            # 如果小于就删去
+            if weight2 < min_weight:
                 R.remove(i)
         return R
 
@@ -158,16 +158,11 @@ class Function:
     def get_weight_upperbound(self, C, R, h):
         # 存放C中所有节点的理想最小权重
         node_weight_list = []
-        CAndR = list(set(C).union(set(R)))
-        CAndRGraph = nx.subgraph(self.G, CAndR)
         CGraph = nx.subgraph(self.G, C)
-        length_C = len(C)
-        # 遍历C
+        # 遍历C中每个节点，计算每个节点的理想最大权重
         for i in C:
             RAndI = list(set(R).union({i}))
             RAndIGraph = nx.subgraph(self.G, RAndI)
-            # 计算i在图C∪R中的最大权值
-            weight1 = get_weight(CAndRGraph, i)
             # 计算i在图C中的权值，再加上几条最大的邻居边
             weight2 = get_weight(CGraph, i)
             # 存放每个节点在R中的邻居边
@@ -175,11 +170,10 @@ class Function:
             for j in nx.neighbors(RAndIGraph, i):
                 neighbor_weight_list.append(RAndIGraph.get_edge_data(i, j)['weight'])
             # 排序后取h-len(C)条边
-            sorted(neighbor_weight_list, reverse=True)
-            for t in range(0, min(h - length_C, len(neighbor_weight_list))):
+            neighbor_weight_list.sort(reverse=True)
+            for t in range(0, min(h - len(C), len(neighbor_weight_list))):
                 weight2 += neighbor_weight_list[t]
-            # 取较小值作为节点的理想最大权重
-            node_weight_list.append(min(weight1, weight2))
+            node_weight_list.append(weight2)
         upper_weight = min(node_weight_list)
         # 计算整个部分解C中最小权重上界
         return upper_weight
