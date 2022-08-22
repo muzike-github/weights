@@ -11,9 +11,8 @@ import sys
 def Recursion(C, R, h):
     global H
     global weight_max
-    # 如果C满足个数且最小权重更大
+    # 如果C满足个数且最小权重更大,更新H和最小权重
     if len(C) == h and fun.get_min_weight(C) > weight_max:
-        # 更新H和最小权重
         H = C[:]
         weight_max = fun.get_min_weight(C)
         print("更新社区:", H, "最小权重为：", weight_max)
@@ -28,10 +27,7 @@ def Recursion(C, R, h):
         CAndV = list(set(C).union({v}))
         RExcludeV = list(set(R).difference({v}))
         Recursion(CAndV, RExcludeV, h)
-        # todo 此处巨坑！！！！！！！！！！！
-        # 注意此处RExcludeV是列表，所以在传入recursion后值会改变，导致后面再次递归调用的时候，
-        # 传入的就不是原来的值，而是删减后的值
-        RExcludeV2=list(set(R).difference({v}))
+        RExcludeV2 = list(set(R).difference({v}))
         Recursion(C, RExcludeV2, h)
 
 
@@ -42,27 +38,19 @@ def WBS(G, q, h):
     fun = fc.Function(G, q)
     H = fun.WSHeuristic(q, h)  # 调用WSHeuristic算法计算一个可行社区H
     weight_max = fun.get_min_weight(H)  # 计算初始社区的最小权重,是为最优社区的下界
-    # scoreUpper = 2  # 上界为最理想情况,社区每个点达到最大值，最小权值也达到最大值
-    print("scoreLower:", weight_max)
     # 开始递归,初始R为所有节点
     R = list(G.nodes)
     R.remove(q)
-    # 将初始可行社区H作为递归参数，
     Recursion([q], R, h)  # 初始最优社区就是SCheu算出的可行社区H
     return H
 
 
 if __name__ == '__main__':
-    # Glist = [(0, 1, 5), (0, 2, 10), (0, 3, 10), (0, 4, 4), (0, 5, 8), (1, 4, 7),
-    #          (2, 3, 1), (2, 5, 10),(2, 7, 8), (3, 4, 1), (4, 5, 7), (4, 6, 6),
-    #          (4, 9, 8), (5, 6, 4), (5, 7, 10),(5, 8, 8), (6, 7, 9), (6, 8, 5), (7, 8, 2), (8, 9, 9)]
-    #
-    # sys.setrecursionlimit(10000)
     start_time = time.time()
-    Glist = fh.csvResolve("dataset/emailWeight.csv")
+    Glist = fh.csvResolve("dataset/wiki-vote.csv")
     G = nx.Graph()
     G.add_weighted_edges_from(Glist)
-    q = 256  # 查询节点和社区大小
+    q = 7  # 查询节点和社区大小
     size = 6
     fun = fc.Function(G, q)
     print("数据的节点数量", len(G.nodes))
@@ -70,10 +58,6 @@ if __name__ == '__main__':
     global H
     global weight_max
     result = WBS(G, q, size)
-    # wiki-vote数据集，查询节点7
-    # bitcoin数据集，查询节点1
-    # email-weight数据集，查询节点256
-    # result = WBS(G, q, size)
     print("社区的最小权重", fun.get_min_weight(H),
           "最小度", fun.minDegree(nx.subgraph(G, H)))
     end_time = time.time()
