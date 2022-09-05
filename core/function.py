@@ -2,6 +2,8 @@
 各种功能函数
 """
 import copy
+import heapq
+
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -168,4 +170,95 @@ class Function:
             node_weight_list.append(weight)
         upper_weight = min(node_weight_list)
         # 计算整个部分解C中最小权重上界
+        return upper_weight
+
+    # 基于邻域重构
+    # 　基于度的上界在考虑的时候认为R可以无限大的满足C中节点的要求，但是其实R也是有限制的
+    def neighbor_reconstruct(self, C, R, h):
+        C_graph = nx.subgraph(self.G, C)
+        C_and_R_graph = nx.subgraph(self.G, list(set(C).union(set(R))))
+        # 从R中取h-|C|个在C中有最多邻居数的节点记为R'
+        max_node_count = h - len(C)
+        neighbor_count_dict = {}
+        # 遍历R，记录每个节点在C∪{r}中的邻居数
+        # 先判断该节点是否与C连通
+        for r in R:
+            r_and_C_graph = nx.subgraph(C_and_R_graph, list(set(C).union({r})))
+            neighbor_count_dict[r] = len(list(nx.neighbors(r_and_C_graph, r)))
+        # 排序，取出前h-|C|个有最多邻居数的,并对字典按照降序排列
+        neighbor_count_dict = dict(heapq.nlargest(max_node_count, neighbor_count_dict.items(), key=lambda x: x[1]))
+        print("前n个为", neighbor_count_dict)
+        # 记录u(u∈C)在C中的度
+        degree_u_in_c = {}
+        for u in C:
+            degree_u_in_c[u] = C_graph.degree(u)
+        # 记录u(u∈C)在C中的权重(后面会对节点进行权重加法)
+        weight_u_in_c = {}
+        for u in C:
+            weight_u_in_c[u] = get_weight(C_graph, u)
+        # 遍历neighbor_dict,从C中选取neighbor_dict[v]个节点，
+        # 将v的neighbor_dict[v]条边按照大权边连接小权重点的原则进行连接
+        for v in neighbor_count_dict:
+            edge_list = []  # 存储节点v最大的neighbor_count_dict[v]条边
+            v_and_C_graph = nx.subgraph(C_and_R_graph, list(set(C).union({v})))
+            for t in nx.neighbors(v_and_C_graph, v):
+                edge_list.append(v_and_C_graph.get_edge_data(v, t)['weight'])
+            edge_list.sort(reverse=True)  # 降序排列，与下面C中节点刚好相反
+            # print(edge_list)
+            # C中取权重最小的neighbor_count_dict[v]个节点，
+            temp_dict = dict(heapq.nsmallest(neighbor_count_dict[v], weight_u_in_c.items(), key=lambda x: x[1]))
+            # print(temp_dict)
+            # 计算出节点的权重,开始加边(此处C中节点是从小到大排列)
+            count = 0  # 用作记录当前节点要加上edge_list的哪一条边
+            for key in temp_dict.keys():
+                weight_u_in_c[key] += edge_list[count]
+                count = count + 1
+        upper_weight = min(weight_u_in_c.values())
+        # print(upper_weight)
+        return upper_weight
+
+    def neighbor_reconstruct_weight(self, C, R, h):
+        C_graph = nx.subgraph(self.G, C)
+        C_and_R_graph = nx.subgraph(self.G, list(set(C).union(set(R))))
+        # 从R中取h-|C|个在C中有最多邻居数的节点记为R'
+        max_node_count = h - len(C)
+        neighbor_count_dict = {}
+        r_in_C_weight_dict={}
+        # 遍历R，记录每个节点在C∪{r}中的权重,以及度数
+        for r in R:
+            r_and_C_graph = nx.subgraph(C_and_R_graph, list(set(C).union({r})))
+            # 记录R中节点的在r_and_C_graph中的度数
+            neighbor_count_dict[r] = len(list(nx.neighbors(r_and_C_graph, r)))
+            # 记录R中节点的在r_and_C_graph中的权重
+            r_in_C_weight_dict[r] = 0
+            for e in nx.neighbors(r_and_C_graph, r):
+                r_in_C_weight_dict[r] += r_and_C_graph.get_edge_data(e, r)['weight']
+        # print(neighbor_count_dict)
+        # print(r_in_C_weight_dict)
+        # 排序，取出前h-|C|个有最多邻居数的,并对字典按照降序排列
+        r_in_C_weight_dict = dict(heapq.nlargest(max_node_count, r_in_C_weight_dict.items(), key=lambda x: x[1]))
+        # print("R中前n个权重最大的为", r_in_C_weight_dict)
+        # 记录u(u∈C)在C中的权重(后面会对节点进行权重加法)
+        weight_u_in_c = {}
+        for u in C:
+            weight_u_in_c[u] = get_weight(C_graph, u)
+        # 遍历neighbor_dict,从C中选取neighbor_dict[v]个节点，
+        # 将v的neighbor_dict[v]条边按照大权边连接小权重点的原则进行连接
+        for v in r_in_C_weight_dict.keys():
+            edge_list = []  # 存储节点v最大的neighbor_count_dict[v]条边
+            v_and_C_graph = nx.subgraph(C_and_R_graph, list(set(C).union({v})))
+            for t in nx.neighbors(v_and_C_graph, v):
+                edge_list.append(v_and_C_graph.get_edge_data(v, t)['weight'])
+            edge_list.sort(reverse=True)  # 降序排列，与下面C中节点刚好相反
+            # print(edge_list)
+            # C中取权重最小的neighbor_count_dict[v]个节点，
+            temp_dict = dict(heapq.nsmallest(neighbor_count_dict[v], weight_u_in_c.items(), key=lambda x: x[1]))
+            # print("C中权重最小的",neighbor_count_dict[v],"n个节点为",temp_dict)
+            # 计算出节点的权重,开始加边(此处C中节点是从小到大排列)
+            count = 0  # 用作记录当前节点要加上edge_list的哪一条边
+            for key in temp_dict.keys():
+                weight_u_in_c[key] += edge_list[count]
+                count = count + 1
+        upper_weight = min(weight_u_in_c.values())
+        # print(upper_weight)
         return upper_weight

@@ -14,9 +14,9 @@ def txtResolve(filename):
         nodeturple = tuple(node)
         Glist.append(nodeturple)
         line = f.readline()
-        t = t + 1
-        if t > 1000:
-            break
+        # t = t + 1
+        # if t > 1000:
+        #     break
     f.close()
     return Glist
 

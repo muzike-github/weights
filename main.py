@@ -19,9 +19,11 @@ def Recursion(C, R, h):
     # 剪枝1，对候选集R进行剪枝
     R = fun.reduce1(C, R, h, weight_max)
     # 剪枝2，对部分解C进行剪枝
-    weight_upperbound = fun.get_weight_upperbound(C, R, h)
+    weight_upperbound1 = fun.get_weight_upperbound(C, R, h)
+    weight_upperbound2 = fun.neighbor_reconstruct_weight(C, R, h)
+    upperbound = min(weight_upperbound2, weight_upperbound1)
     # 如果C的节点数小于h并且候选集R不为空，且当前部分解的理想最小权重大于weight
-    if len(C) < h and len(R) != 0 and weight_upperbound > weight_max:
+    if len(C) < h and len(R) != 0 and upperbound > weight_max:
         # 从候选集R中选一个节点生成两个分支
         v = R[0]
         CAndV = list(set(C).union({v}))
@@ -51,7 +53,7 @@ if __name__ == '__main__':
     G = nx.Graph()
     G.add_weighted_edges_from(Glist)
     q = 7  # 查询节点和社区大小
-    size = 6
+    size = 8
     fun = fc.Function(G, q)
     print("数据的节点数量", len(G.nodes))
     print("数据的边数量", len(G.edges))
