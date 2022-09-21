@@ -30,7 +30,7 @@ def csvResolve(filename):
         header_row = next(render)  # 取表头
         for row in render:
             t = t + 1
-            if t > 10000:
+            if t > 5000:
                 break
             node1 = int(row[0])
             node2 = int(row[1])

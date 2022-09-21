@@ -25,7 +25,11 @@ def Recursion(C, R, h):
     # 如果C的节点数小于h并且候选集R不为空，且当前部分解的理想最小权重大于weight
     if len(C) < h and len(R) != 0 and upperbound > weight_max:
         # 从候选集R中选一个节点生成两个分支
-        v = R[0]
+        # 此节点不应当随意选取(采用节点选择策略可降低计算时间)
+        scoreDict = fun.weight_score(C, R)
+        score_max_node = max(scoreDict, key=scoreDict.get)
+        # v = R[0]
+        v = score_max_node
         CAndV = list(set(C).union({v}))
         RExcludeV = list(set(R).difference({v}))
         Recursion(CAndV, RExcludeV, h)
