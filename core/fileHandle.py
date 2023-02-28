@@ -27,14 +27,14 @@ def csvResolve(filename):
     t = 0
     with open(filename) as f:
         render = csv.reader(f)
-        header_row = next(render)  # 取表头
+        # header_row = next(render)  # 取表头
         for row in render:
-            t = t + 1
-            if t > 5000:
-                break
+            # t = t + 1
+            # if t > 5000:
+            #     break
             node1 = int(row[0])
             node2 = int(row[1])
-            weight = int(row[2])
+            weight = float(row[2])
             Glist.append((node1, node2, weight))
     # print(Glist)
     return Glist

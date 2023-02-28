@@ -1,10 +1,9 @@
-import copy
-
 import networkx as nx
 import core.function as fc
 import core.fileHandle as fh
 import time
-import sys
+import matplotlib.pyplot as plt
+import save as save
 
 
 # 递归函数,weight是当前以求得的最优社区的最小权重
@@ -51,21 +50,50 @@ def WBS(G, q, h):
     return H
 
 
+def paint(G):
+    # 生成节点位置序列（）
+    pos = nx.spring_layout(G)
+    # 重新获取权重序列
+    weights = nx.get_edge_attributes(G, "weight")
+    # 画节点图
+    nx.draw_networkx(G, pos, with_labels=True)
+    # 画权重图
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=weights)
+    plt.rcParams['font.sans-serif'] = ['SimHei']
+    plt.title(str)
+    plt.show()
+
+
+'''
+数据集的查询结点：
+wiki-vote:7
+bitcoin:1
+email-weight:256
+dblp:247
+dblp:354
+lastfm:81
+'''
 if __name__ == '__main__':
-    start_time = time.time()
-    Glist = fh.csvResolve("dataset/wiki-vote.csv")
+    filename = "dataset/facebook.csv"
+    Glist = fh.csvResolve(filename)
     G = nx.Graph()
     G.add_weighted_edges_from(Glist)
-    q = 7  # 查询节点和社区大小
-    size = 8
+    q = 1  # 查询节点和社区大小
+    size = 7
     fun = fc.Function(G, q)
     print("数据的节点数量", len(G.nodes))
     print("数据的边数量", len(G.edges))
     global H
     global weight_max
+    start_time = time.time()
     result = WBS(G, q, size)
-    print("社区的最小权重", fun.get_min_weight(H),
-          "最小度", fun.minDegree(nx.subgraph(G, H)))
     end_time = time.time()
+    # 最小影响力
+    min_influential = fun.get_min_weight(H)
+    # 最小度
+    min_degree = fun.minDegree(nx.subgraph(G, H))
     print("耗时", end_time - start_time)
+    print("社区的最小权重", min_influential,
+          "最小度", min_degree)
+    save.save_txt(filename, min_influential, end_time - start_time, min_degree)
     fc.paint(Glist, result, "weightOnly")

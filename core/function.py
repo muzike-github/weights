@@ -58,7 +58,8 @@ class Function:
             weights.append(weight)
         return min(weights)
 
-    # 计算权重分数用以启发式算法中选取节点
+        # 计算权重分数用以启发式算法中选取节点
+
     def weight_score(self, C, R):
         copyC = C.copy()  # 用copyC 代替C的所有操作,否则求完连接分数后C会改变
         scoreDict = {}  # 字典保存R中每个节点的连接分数
@@ -87,7 +88,7 @@ class Function:
     # 启发式算法计算初始可行社区
     def WSHeuristic(self, q, h):
         print("===========权重分数启发式算法开始=============")
-        # print("查询节点", q, "的度为：", self.G.degree(q))
+        print("查询节点", q, "的度为：", self.G.degree(q))
         H = [q]  # 初始为查询节点
         # 如果只有一个节点，选取所有邻居中度数最大的节点
         if len(H) == 1:
@@ -114,6 +115,8 @@ class Function:
         print("启发式算法结束")
         return H
 
+    # 　距离缩减
+
     # 缩减规则1（对R中节点进行修剪）
     def reduce1(self, C, R, h, min_weight):
         RCopy = R.copy()  # 利用copy数组循环，去改变
@@ -121,16 +124,6 @@ class Function:
             CAndI = list(set(C).union({i}))
             CAndIGraph = nx.subgraph(self.G, CAndI)  # 图C∪{i}
             RGraph = nx.subgraph(self.G, R)  # 图R
-            # 首先要看该节点是否与部分解C连通（注意此处是CAndRGraph）
-            # connected = False
-            # for t in C:
-            #     if nx.has_path(CAndRGraph, i, t):
-            #         connected = True
-            # # 如果该节点与C中每一个节点都不连通，删除之
-            # if not connected:
-            #     R.remove(i)
-            #     continue
-            # max_node_count表示该节点最多可能再和h - len(C) - 1个节点相连
             max_node_count = h - len(C) - 1
             # 列表存储节点i的邻居边
             neighbor_weight_list = []
@@ -182,11 +175,11 @@ class Function:
         # 从R中取h-|C|个在C中有最多邻居数的节点记为R'
         max_node_count = h - len(C)
         neighbor_count_dict = {}
-        r_in_C_weight_dict={}
+        r_in_C_weight_dict = {}
         # 遍历R，记录每个节点在C∪{r}中的权重,以及度数
         for r in R:
             r_and_C_graph = nx.subgraph(C_and_R_graph, list(set(C).union({r})))
-            # 记录R中节点的在r_and_C_graph中的度数
+            # 记录R中节点的在r_and_C_graph中的度数（邻居数）
             neighbor_count_dict[r] = len(list(nx.neighbors(r_and_C_graph, r)))
             # 记录R中节点的在r_and_C_graph中的权重
             r_in_C_weight_dict[r] = 0
@@ -222,7 +215,3 @@ class Function:
         upper_weight = min(weight_u_in_c.values())
         # print(upper_weight)
         return upper_weight
-
-
-
-
