@@ -1,0 +1,5 @@
+=======2023-03-06_152212========
+dataset:dataset/facebook.csv
+min_influential:0.996
+time_consume:145.96550178527832
+min_degree:4
