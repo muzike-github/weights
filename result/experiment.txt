@@ -3,3 +3,127 @@ dataset:dataset/facebook.csv
 min_influential:0.996
 time_consume:145.96550178527832
 min_degree:4
+=======2023-03-06_160733========
+dataset:dataset/facebook.csv
+=======2023-03-06_163206========
+dataset:dataset/facebook.csv
+=======2023-03-06_163557========
+dataset:dataset/facebook.csv
+nodes:1724	 edges:5000
+min_influential:0.996
+time_consume:148.55477619171143
+min_degree:4
+=======2023-03-06_165209========
+dataset:dataset/facebook.csv
+nodes:1724	 edges:5000
+min_influential:0.996
+time_consume:150.32129383087158
+min_degree:4
+=======2023-03-07_150400========
+dataset:dataset/bitcoinJa.csv
+nodes:1120	 edges:2828
+min_influential:0.352
+time_consume:19.902877807617188
+min_degree:5
+=======2023-03-07_150427========
+dataset:dataset/bitcoinJa.csv
+nodes:1120	 edges:2828
+min_influential:0.356
+time_consume:8.369224786758423
+min_degree:4
+=======2023-03-07_152451========
+dataset:dataset/bitcoinJa.csv
+nodes:5881	 edges:21492
+min_influential:0.8140000000000001
+time_consume:1143.2154862880707
+min_degree:6
+=======2023-03-07_170146========
+dataset:dataset/facebook.csv
+nodes:1724	 edges:5000
+min_influential:1.413
+time_consume:65.11413550376892
+min_degree:6
+=======2023-03-07_170244========
+dataset:dataset/bitcoinJa.csv
+nodes:1120	 edges:2828
+min_influential:0.346
+time_consume:0.3025822639465332
+min_degree:4
+=======2023-03-07_170320========
+dataset:dataset/bitcoinJa.csv
+nodes:5881	 edges:21492
+min_influential:0.365
+time_consume:10.733581304550171
+min_degree:4
+=======2023-03-10_142100========
+dataset:dataset/bitcoinJa.csv
+nodes:5881	 edges:21492	 queryNode:3
+min_influential:0.365
+time_consume:10.736963510513306
+min_degree:4
+=======2023-03-10_142319========
+dataset:dataset/facebook.csv
+nodes:1724	 edges:5000	 queryNode:3
+min_influential:1.413
+time_consume:64.82364821434021
+min_degree:6
+=======2023-03-10_142441========
+dataset:dataset/facebook.csv
+nodes:1724	 edges:5000	 queryNode:100
+min_influential:1.339
+time_consume:59.93016242980957
+min_degree:2
+=======2023-03-10_142706========
+dataset:dataset/facebook.csv
+nodes:1724	 edges:5000	 queryNode:3
+min_influential:1.413
+time_consume:65.38111448287964
+min_degree:6
+=======2023-03-10_144036========
+dataset:dataset/facebook.csv
+nodes:1724	 edges:5000	 queryNode:3
+min_influential:1.413
+time_consume:19.831787824630737
+min_degree:6
+=======2023-03-10_144102========
+dataset:dataset/facebook.csv
+nodes:1724	 edges:5000	 queryNode:100
+min_influential:1.08
+time_consume:11.406872749328613
+min_degree:3
+=======2023-03-10_151058========
+dataset:dataset/facebook.csv
+nodes:1519	 edges:33690	 queryNode:100
+min_influential:1.08
+time_consume:130.83449745178223
+min_degree:3
+=======2023-03-10_151341========
+dataset:dataset/facebook.csv
+nodes:1519	 edges:33690	 queryNode:3
+min_influential:1.413
+time_consume:82.72929358482361
+min_degree:6
+=======2023-03-10_151858========
+dataset:dataset/facebook.csv
+nodes:1519	 edges:33690	 queryNode:1
+min_influential:0.996
+time_consume:39.966116189956665
+min_degree:4
+=======2023-03-10_153307========
+dataset:dataset/Wiki-Vote.csv
+nodes:4955	 edges:96490	 queryNode:7
+min_influential:0.37799999999999995
+time_consume:160.4922285079956
+min_degree:4
+=======2023-03-10_153828========
+dataset:dataset/bitcoinJa.csv
+nodes:4954	 edges:20208	 queryNode:3
+min_influential:0.365
+time_consume:9.911454200744629
+min_degree:4
+=======2023-03-10_155332========
+dataset:dataset/Wiki-Vote.csv
+nodes:4955	 edges:96490	 queryNode:7
+min_influential:0.37799999999999995
+time_consume:167.11485075950623
+min_degree:4

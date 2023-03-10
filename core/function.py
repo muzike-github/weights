@@ -41,6 +41,13 @@ class Function:
         self.G = G
         self.q = q
 
+    def is_path(self,v, C):
+        v_and_C_graph=nx.subgraph(self.G,list(set(C).union({v})))
+        for u in C:
+            if not nx.has_path(v_and_C_graph, u, v):
+                return False
+        return True
+
     def minDegree(self, G):
         degrees = []
         for i in G:
@@ -115,7 +122,7 @@ class Function:
         print("启发式算法结束")
         return H
 
-    # 　距离缩减
+    # 距离缩减
 
     # 缩减规则1（对R中节点进行修剪）
     def reduce1(self, C, R, h, min_weight):
@@ -144,6 +151,7 @@ class Function:
 
     # 计算部分解C的权重上界
     def get_weight_upperbound(self, C, R, h):
+        max_node_count = h - len(C)
         # 存放C中所有节点的理想最小权重
         node_weight_list = []
         CGraph = nx.subgraph(self.G, C)
@@ -158,10 +166,13 @@ class Function:
             for j in nx.neighbors(RAndIGraph, i):
                 neighbor_weight_list.append(RAndIGraph.get_edge_data(i, j)['weight'])
             # 排序后取h-len(C)条边
-            neighbor_weight_list.sort(reverse=True)
+            neighbor_weight_list = heapq.nlargest(max_node_count, neighbor_weight_list)
+            # neighbor_weight_list.sort(reverse=True)
             # print("weight_upperbound",len(neighbor_weight_list))
-            for t in range(0, min(h - len(C), len(neighbor_weight_list))):
-                weight += neighbor_weight_list[t]
+            for e in neighbor_weight_list:
+                weight += e
+            # for t in range(0, min(max_node_count, len(neighbor_weight_list))):
+            #     weight += neighbor_weight_list[t]
             node_weight_list.append(weight)
         upper_weight = min(node_weight_list)
         # 计算整个部分解C中最小权重上界
@@ -181,37 +192,31 @@ class Function:
             r_and_C_graph = nx.subgraph(C_and_R_graph, list(set(C).union({r})))
             # 记录R中节点的在r_and_C_graph中的度数（邻居数）
             neighbor_count_dict[r] = len(list(nx.neighbors(r_and_C_graph, r)))
-            # 记录R中节点的在r_and_C_graph中的权重
+            # 记录R中节点r的在r_and_C_graph中的权重
             r_in_C_weight_dict[r] = 0
             for e in nx.neighbors(r_and_C_graph, r):
                 r_in_C_weight_dict[r] += r_and_C_graph.get_edge_data(e, r)['weight']
-        # print(neighbor_count_dict)
-        # print(r_in_C_weight_dict)
         # 排序，取出前h-|C|个有最多邻居数的,并对字典按照降序排列
         r_in_C_weight_dict = dict(heapq.nlargest(max_node_count, r_in_C_weight_dict.items(), key=lambda x: x[1]))
-        # print("R中前n个权重最大的为", r_in_C_weight_dict)
         # 记录u(u∈C)在C中的权重(后面会对节点进行权重加法)
-        weight_u_in_c = {}
+        weight_u_in_C = {}
         for u in C:
-            weight_u_in_c[u] = get_weight(C_graph, u)
-        # 遍历neighbor_dict,从C中选取neighbor_dict[v]个节点，
-        # 将v的neighbor_dict[v]条边按照大权边连接小权重点的原则进行连接
+            weight_u_in_C[u] = get_weight(C_graph, u)
+        # 遍历前max_node_count个权重最大的节点，对每个节点取
         for v in r_in_C_weight_dict.keys():
-            edge_list = []  # 存储节点v最大的neighbor_count_dict[v]条边
+            # 存储节点v最大的neighbor_count_dict[v]条边
+            edge_list = []
             v_and_C_graph = nx.subgraph(C_and_R_graph, list(set(C).union({v})))
             for t in nx.neighbors(v_and_C_graph, v):
                 edge_list.append(v_and_C_graph.get_edge_data(v, t)['weight'])
             edge_list.sort(reverse=True)  # 降序排列，与下面C中节点刚好相反
-            # print("reconstruct:",len(edge_list))
-            # print(edge_list)
-            # C中取权重最小的neighbor_count_dict[v]个节点，
-            temp_dict = dict(heapq.nsmallest(neighbor_count_dict[v], weight_u_in_c.items(), key=lambda x: x[1]))
-            # print("C中权重最小的",neighbor_count_dict[v],"n个节点为",temp_dict)
+            # 对于节点v，其度数为d,则在C中取权重最小的d个节点，
+            nsmallest_inC_dict = dict(
+                heapq.nsmallest(neighbor_count_dict[v], weight_u_in_C.items(), key=lambda x: x[1]))
             # 计算出节点的权重,开始加边(此处C中节点是从小到大排列)
             count = 0  # 用作记录当前节点要加上edge_list的哪一条边
-            for key in temp_dict.keys():
-                weight_u_in_c[key] += edge_list[count]
+            for key in nsmallest_inC_dict.keys():
+                weight_u_in_C[key] += edge_list[count]
                 count = count + 1
-        upper_weight = min(weight_u_in_c.values())
-        # print(upper_weight)
+        upper_weight = min(weight_u_in_C.values())
         return upper_weight

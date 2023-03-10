@@ -29,9 +29,9 @@ def csvResolve(filename):
         render = csv.reader(f)
         # header_row = next(render)  # 取表头
         for row in render:
-            t = t + 1
-            if t > 5000:
-                break
+            # t = t + 1
+            # if t > 5000:
+            #     break
             node1 = int(row[0])
             node2 = int(row[1])
             weight = float(row[2])

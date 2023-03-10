@@ -5,6 +5,22 @@ import time
 import matplotlib.pyplot as plt
 import save as save
 
+node_list = [(0, 1, 7), (0, 2, 4), (0, 3, 2), (0, 4, 6), (0, 5, 9),
+             (1, 4, 8), (2, 3, 5), (2, 5, 8), (3, 4, 10),
+             (4, 5, 8), (4, 6, 9), (4, 9, 10),
+             (5, 6, 10), (5, 7, 8), (5, 8, 7),
+             (6, 7, 7), (6, 8, 10), (7, 8, 9), (8, 9, 7)]
+
+
+# 根据距离对R进行预处理
+def pre_byDistance():
+    delete_list = []
+    for v in G.nodes:
+        if not nx.has_path(G,v,q) or nx.shortest_path_length(G, v, q) > int(size / 2):
+            delete_list.append(v)
+    for i in delete_list:
+        G.remove_node(i)
+
 
 # 递归函数,weight是当前以求得的最优社区的最小权重
 def Recursion(C, R, h):
@@ -27,12 +43,13 @@ def Recursion(C, R, h):
         # 此节点不应当随意选取(采用节点选择策略可降低计算时间)
         scoreDict = fun.weight_score(C, R)
         score_max_node = max(scoreDict, key=scoreDict.get)
-        # v = R[0]
         v = score_max_node
         CAndV = list(set(C).union({v}))
         RExcludeV = list(set(R).difference({v}))
-        Recursion(CAndV, RExcludeV, h)
         RExcludeV2 = list(set(R).difference({v}))
+        #  此处判断节点v是否和C相连（莫名提高了算法效率）
+        if fun.is_path(v, C):
+            Recursion(CAndV, RExcludeV, h)
         Recursion(C, RExcludeV2, h)
 
 
@@ -40,7 +57,6 @@ def Recursion(C, R, h):
 def WBS(G, q, h):
     global H
     global weight_min
-    fun = fc.Function(G, q)
     H = fun.WSHeuristic(q, h)  # 调用WSHeuristic算法计算一个可行社区H
     weight_min = fun.get_min_weight(H)  # 计算初始社区的最小权重,是为最优社区的下界
     # 开始递归,初始R为所有节点
@@ -74,17 +90,23 @@ dblp:354
 lastfm:81
 '''
 if __name__ == '__main__':
-    filename = "dataset/facebook.csv"
+    q = 7 # 查询节点和社区大小
+    size = 7
+    H = []
+    weight_min = 0
+    filename = "dataset/Wiki-Vote.csv"
     Glist = fh.csvResolve(filename)
+    # Glist = node_list
     G = nx.Graph()
     G.add_weighted_edges_from(Glist)
-    q = 1  # 查询节点和社区大小
-    size = 7
+    print(len(G.nodes))
+    # 预处理
+    pre_byDistance()
+    print(len(G.nodes))
     fun = fc.Function(G, q)
     print("数据的节点数量", len(G.nodes))
     print("数据的边数量", len(G.edges))
-    global H
-    global weight_min
+
     start_time = time.time()
     result = WBS(G, q, size)
     end_time = time.time()
@@ -95,5 +117,5 @@ if __name__ == '__main__':
     print("耗时", end_time - start_time)
     print("社区的最小权重", min_influential,
           "最小度", min_degree)
-    save.save_txt(filename, min_influential, end_time - start_time, min_degree)
+    save.save_txt(filename, len(G.nodes), len(G.edges), q, min_influential, end_time - start_time, min_degree)
     fc.paint(Glist, result, "weightOnly")
