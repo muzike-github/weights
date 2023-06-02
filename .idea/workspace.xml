@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04e658e7-f9b5-4e7b-9c83-41eb44eb534c" name="Default Changelist" comment="修复结果社区存在节点不连通的bug（意外提高了算法的搜索效率），增加距离剪枝">
-      <change afterPath="$PROJECT_DIR$/core/get_max_and_ave.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/get_node_degree.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/paint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/Brightkite_edges.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/HR_edges.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Weights.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/baseline.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="04e658e7-f9b5-4e7b-9c83-41eb44eb534c" name="Default Changelist" comment="增加画图函数和节点选择策略的对比实验">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/function.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataTrans.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataTrans.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/paint.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/paint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/paint_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/paint_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/result/experiment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/result/experiment.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -186,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678435014059</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="增加画图函数和节点选择策略的对比实验">
+      <created>1685674694065</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685674694065</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,7 +203,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="使用排序1.0，小优化" />
     <MESSAGE value="修复结果社区存在节点不连通的bug（意外提高了算法的搜索效率），增加距离剪枝" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复结果社区存在节点不连通的bug（意外提高了算法的搜索效率），增加距离剪枝" />
+    <MESSAGE value="增加画图函数和节点选择策略的对比实验" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加画图函数和节点选择策略的对比实验" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

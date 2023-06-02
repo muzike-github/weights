@@ -62,7 +62,7 @@ def facebook_efficiency():
     plt.show()
 
 
-# 不同剪枝策略对算法效率的影响
+# 去除某种剪枝操作对算法效率的影响
 # FaceBook
 def facebook_different_strategy():
     x_list = ['4', '5', '6', '7', '8']  # 横坐标，社区大小
@@ -82,6 +82,7 @@ def facebook_different_strategy():
     plt.ylabel('runtime(s)')
     plt.yticks(y_tick)
     plt.show()
+
 
 # wiki-vote
 
@@ -104,5 +105,44 @@ def wiki_vote_different_strategy():
     plt.yticks(y_tick)
     plt.show()
 
-wiki_vote_different_strategy()
-facebook_different_strategy()
+
+def facebook_nodeChoose_strategy():
+    x_list = ['4', '5', '6', '7', '8']  # 横坐标，社区大小
+    y1 = [2.7, 6.6, 46, 68, 237]  # score
+    y2 = [1.1, 9, 164, 269, 4756]  # random
+    y3 = [0.2, 0.3, 113, 116, 535]  # weight
+    y_tick = [pow(10, i) for i in range(0, 5)]
+    # y_label = [pow(10, i) for i in range(0, 4)]
+    # y_label.append('inf')
+    plt.semilogy(x_list, y1, '*-', alpha=0.5, linewidth=1, label='score')
+    plt.semilogy(x_list, y2, '^-', alpha=0.5, linewidth=1, label='random')
+    plt.semilogy(x_list, y3, '+-', alpha=0.5, linewidth=1, label='weight')
+    plt.legend()
+    plt.xlabel('size')
+    plt.ylabel('runtime(s)')
+    plt.yticks(y_tick)
+    plt.title("facebook")
+    plt.show()
+
+
+def wiki_vote_nodeChoose_strategy():
+    x_list = ['4', '5', '6', '7', '8']  # 横坐标，社区大小
+    y1 = [15, 23, 50, 121, 189]  # score
+    y2 = [11, 44, 309, 1360, 9756]  # random
+    y3 = [15, 55, 172, 759, 2248]  # weight
+    y_tick = [pow(10, i) for i in range(0, 5)]
+    # y_label = [pow(10, i) for i in range(0, 4)]
+    # y_label.append('inf')
+    plt.semilogy(x_list, y1, '*-', alpha=0.5, linewidth=1, label='score')
+    plt.semilogy(x_list, y2, '^-', alpha=0.5, linewidth=1, label='random')
+    plt.semilogy(x_list, y3, '+-', alpha=0.5, linewidth=1, label='weight')
+    plt.legend()
+    plt.yticks(y_tick)
+    plt.xlabel('size')
+    plt.ylabel('runtime(s)')
+    plt.title("wiki_vote")
+    plt.show()
+
+
+facebook_nodeChoose_strategy()
+wiki_vote_nodeChoose_strategy()

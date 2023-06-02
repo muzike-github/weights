@@ -30,15 +30,15 @@ def Recursion(C, R, h):
     if len(C) == h and fun.get_min_weight(C) > weight_min:
         H = C[:]
         weight_min = fun.get_min_weight(C)
-        print("更新社区:", H, "最小权重为：", weight_min,"runtime:",time.time() - start_time)
+        print("更新社区:", H, "最小权重为：", weight_min, "runtime:", time.time() - start_time)
     # 剪枝1，对候选集R进行剪枝
     R = fun.reduce1(C, R, h, weight_min)
     # 剪枝2，对部分解C进行剪枝
-    # weight_upperbound1 = fun.get_weight_upperbound(C, R, h)
-    # weight_upperbound2 = fun.neighbor_reconstruct_weight(C, R, h)
-    # upperbound = min(weight_upperbound2, weight_upperbound1)
+    weight_upperbound1 = fun.get_weight_upperbound(C, R, h)
+    weight_upperbound2 = fun.neighbor_reconstruct_weight(C, R, h)
+    upperbound = min(weight_upperbound2, weight_upperbound1)
     # 如果C的节点数小于h并且候选集R不为空，且当前部分解的理想最小权重大于weight
-    if len(C) < h and len(R) != 0: #and upperbound > weight_min:
+    if len(C) < h and len(R) != 0 and upperbound > weight_min:
         # 从候选集R中选一个节点生成两个分支
         # 此节点不应当随意选取(采用节点选择策略可降低计算时间)
         # scoreDict = fun.weight_score(C, R)
@@ -50,10 +50,9 @@ def Recursion(C, R, h):
         RExcludeV = list(set(R).difference({v}))
         RExcludeV2 = list(set(R).difference({v}))
         #  此处判断节点v是否和C相连（莫名提高了算法效率）
-        if fun.is_path(v, C):
+        if fun.has_path(v, C):
             Recursion(CAndV, RExcludeV, h)
         Recursion(C, RExcludeV2, h)
-
 
 
 # 节点选择策略：
@@ -61,10 +60,10 @@ def Recursion(C, R, h):
 def choose_by_weight(C, R):
     C_and_R = list(set(C).union(set(R)))
     C_and_R_graph = nx.subgraph(G, C_and_R)
-    candidate = []
+    candidate = {}
     for r in R:
-        candidate.append(fc.get_weight(C_and_R_graph, r))
-    return max(candidate)
+        candidate[r] = (fc.get_weight(C_and_R_graph, r))
+    return max(candidate, key=candidate.get)
 
 
 # 随机选取
@@ -77,6 +76,7 @@ def choose_by_score(C, R):
     scoreDict = fun.weight_score(C, R)
     score_max_node = max(scoreDict, key=scoreDict.get)
     return score_max_node
+
 
 # 主算法
 def WBS(G, q, h):

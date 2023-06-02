@@ -397,3 +397,111 @@ nodes:6721	 edges:100339	 queryNode:1489
 min_influential:1.162
 time_consume:4421.802095174789
 min_degree:6
+=======2023-06-02_110029========
+dataset:dataset/facebook.csv
+nodes:567	 edges:8616	 queryNode:436
+min_influential:1.504
+time_consume:1.1437585353851318
+min_degree:3
+=======2023-06-02_110122========
+dataset:dataset/facebook.csv
+nodes:567	 edges:8616	 queryNode:436
+min_influential:1.979
+time_consume:9.090463876724243
+min_degree:4
+=======2023-06-02_110709========
+dataset:dataset/facebook.csv
+nodes:2125	 edges:63098	 queryNode:436
+min_influential:2.446
+time_consume:322.61945509910583
+min_degree:5
+=======2023-06-02_110822========
+dataset:dataset/facebook.csv
+nodes:567	 edges:8616	 queryNode:436
+min_influential:1.504
+time_consume:1.1601290702819824
+min_degree:3
+=======2023-06-02_110844========
+dataset:dataset/facebook.csv
+nodes:567	 edges:8616	 queryNode:436
+min_influential:1.979
+time_consume:9.438705682754517
+min_degree:4
+=======2023-06-02_111447========
+dataset:dataset/facebook.csv
+nodes:2125	 edges:63098	 queryNode:436
+min_influential:2.446
+time_consume:349.58937907218933
+min_degree:5
+=======2023-06-02_112143========
+dataset:dataset/facebook.csv
+nodes:2125	 edges:63098	 queryNode:436
+min_influential:2.446
+time_consume:46.505879163742065
+min_degree:5
+=======2023-06-02_112501========
+dataset:dataset/facebook.csv
+nodes:2125	 edges:63098	 queryNode:436
+min_influential:2.446
+time_consume:164.03445720672607
+min_degree:5
+=======2023-06-02_113014========
+dataset:dataset/facebook.csv
+nodes:2125	 edges:63098	 queryNode:436
+min_influential:2.9139999999999997
+time_consume:269.9599804878235
+min_degree:6
+=======2023-06-02_125002========
+dataset:dataset/facebook.csv
+nodes:3833	 edges:86244	 queryNode:436
+min_influential:3.365
+time_consume:4756.395297527313
+min_degree:7
+=======2023-06-02_153445========
+dataset:dataset/facebook.csv
+nodes:567	 edges:8616	 queryNode:436
+min_influential:1.504
+time_consume:0.23305535316467285
+min_degree:3
+=======2023-06-02_153624========
+dataset:dataset/facebook.csv
+nodes:567	 edges:8616	 queryNode:436
+min_influential:1.979
+time_consume:0.3473985195159912
+min_degree:4
+=======2023-06-02_153650========
+dataset:dataset/facebook.csv
+nodes:567	 edges:8616	 queryNode:436
+min_influential:1.979
+time_consume:0.3757016658782959
+min_degree:4
+=======2023-06-02_153709========
+dataset:dataset/facebook.csv
+nodes:567	 edges:8616	 queryNode:436
+min_influential:1.504
+time_consume:0.23545622825622559
+min_degree:3
+=======2023-06-02_153921========
+dataset:dataset/facebook.csv
+nodes:2125	 edges:63098	 queryNode:436
+min_influential:2.446
+time_consume:113.46982669830322
+min_degree:5
+=======2023-06-02_154151========
+dataset:dataset/facebook.csv
+nodes:2125	 edges:63098	 queryNode:436
+min_influential:2.9139999999999997
+time_consume:116.58556628227234
+min_degree:6
+=======2023-06-02_155519========
+dataset:dataset/facebook.csv
+nodes:3833	 edges:86244	 queryNode:436
+min_influential:3.365
+time_consume:535.1434576511383
+min_degree:7
+=======2023-06-02_163149========
+dataset:dataset/Wiki-Vote.csv
+nodes:6721	 edges:100339	 queryNode:1489
+min_influential:1.162
+time_consume:1360.3184089660645
+min_degree:6

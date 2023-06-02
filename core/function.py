@@ -41,8 +41,8 @@ class Function:
         self.G = G
         self.q = q
 
-    def is_path(self,v, C):
-        v_and_C_graph=nx.subgraph(self.G,list(set(C).union({v})))
+    def has_path(self, v, C):
+        v_and_C_graph = nx.subgraph(self.G, list(set(C).union({v})))
         for u in C:
             if not nx.has_path(v_and_C_graph, u, v):
                 return False
@@ -120,7 +120,7 @@ class Function:
         if len(H) == 0:
             H = [q]
         print("权重分数启发式算法得到的可行社区为:", H, "最小权重：", self.get_min_weight(H),
-              "最小度为",self.minDegree(nx.subgraph(self.G,H)))
+              "最小度为", self.minDegree(nx.subgraph(self.G, H)))
         print("启发式算法结束")
         return H
 
