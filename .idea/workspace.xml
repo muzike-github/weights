@@ -1,18 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04e658e7-f9b5-4e7b-9c83-41eb44eb534c" name="Default Changelist" comment="使用排序1.0，小优化">
+    <list default="true" id="04e658e7-f9b5-4e7b-9c83-41eb44eb534c" name="Default Changelist" comment="修复结果社区存在节点不连通的bug（意外提高了算法的搜索效率），增加距离剪枝">
+      <change afterPath="$PROJECT_DIR$/core/get_max_and_ave.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/get_node_degree.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/paint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/Brightkite_edges.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/HR_edges.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Weights.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/baseline.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/fileHandle.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/fileHandle.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataTrans.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataTrans.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paint_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/paint_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/result/experiment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/result/experiment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/save.py" beforeDir="false" afterPath="$PROJECT_DIR$/save.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -25,10 +39,38 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/core" />
   </component>
-  <component name="RunManager" selected="Python.main">
-    <configuration name="function" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Weights" />
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CommunitySearchCode\weights\core" />
+      <recent name="D:\CommunitySearchCode\weights\dataset" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.paint">
+    <configuration name="dataTrans" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="baseline" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataTrans.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="get_node_degree" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="baseline" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -39,7 +81,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/function.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/get_node_degree.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -49,7 +91,7 @@
       <method v="2" />
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Weights" />
+      <module name="baseline" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -69,19 +111,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="paint_test." type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Weights" />
+    <configuration name="paint" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="baseline" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/paint_test..py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/paint.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -91,18 +133,18 @@
       <method v="2" />
     </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Weights" />
+      <module name="baseline" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -113,10 +155,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.paint" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.paint_test." />
-        <item itemvalue="Python.function" />
+        <item itemvalue="Python.get_node_degree" />
+        <item itemvalue="Python.dataTrans" />
       </list>
     </recent_temporary>
   </component>
@@ -136,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678089624401</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修复结果社区存在节点不连通的bug（意外提高了算法的搜索效率），增加距离剪枝">
+      <created>1678435014059</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678435014059</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,6 +203,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="使用排序1.0，小优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="使用排序1.0，小优化" />
+    <MESSAGE value="修复结果社区存在节点不连通的bug（意外提高了算法的搜索效率），增加距离剪枝" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复结果社区存在节点不连通的bug（意外提高了算法的搜索效率），增加距离剪枝" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/core/get_node_degree.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

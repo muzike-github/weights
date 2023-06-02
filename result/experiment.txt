@@ -2,7 +2,7 @@
 dataset:dataset/facebook.csv
 min_influential:0.996
 time_consume:145.96550178527832
-min_degree:4
+min_degree:49
 =======2023-03-06_160733========
 dataset:dataset/facebook.csv
 =======2023-03-06_163206========
@@ -127,3 +127,273 @@ nodes:4955	 edges:96490	 queryNode:7
 min_influential:0.37799999999999995
 time_consume:167.11485075950623
 min_degree:4
+=======2023-03-17_143641========
+dataset:dataset/Wiki-Vote.csv
+nodes:4955	 edges:96490	 queryNode:7
+min_influential:0.37799999999999995
+time_consume:159.859961271286
+min_degree:4
+=======2023-03-17_154700========
+dataset:dataset/Wiki-Vote.csv
+nodes:6721	 edges:100339	 queryNode:1489
+min_influential:1.162
+time_consume:85.3313775062561
+min_degree:6
+=======2023-03-21_154025========
+dataset:dataset/Wiki-Vote.csv
+nodes:7115	 edges:100762	 queryNode:813
+min_influential:1.2149999999999999
+time_consume:15.234834909439087
+min_degree:6
+=======2023-03-21_154312========
+dataset:dataset/Wiki-Vote.csv
+nodes:7115	 edges:100762	 queryNode:231
+min_influential:0.49700000000000005
+time_consume:143.33755826950073
+min_degree:5
+=======2023-03-21_155629========
+dataset:dataset/HR_edges_ja.csv
+nodes:11374	 edges:115398	 queryNode:972
+min_influential:1.403
+time_consume:74.69498419761658
+min_degree:6
+=======2023-03-21_160003========
+dataset:dataset/HR_edges_ja.csv
+nodes:11374	 edges:115398	 queryNode:972
+min_influential:1.403
+time_consume:93.98050832748413
+min_degree:6
+=======2023-04-03_110006========
+dataset:dataset/facebook.csv
+nodes:2125	 edges:63098	 queryNode:430
+min_influential:2.118
+time_consume:113.52165651321411
+min_degree:6
+=======2023-04-03_110135========
+dataset:dataset/facebook.csv
+nodes:211	 edges:1997	 queryNode:751
+min_influential:1.211
+time_consume:9.002740859985352
+min_degree:4
+=======2023-04-03_110440========
+dataset:dataset/facebook.csv
+nodes:211	 edges:1997	 queryNode:715
+min_influential:1.233
+time_consume:6.24397873878479
+min_degree:4
+=======2023-04-03_110738========
+dataset:dataset/facebook.csv
+nodes:2125	 edges:63098	 queryNode:436
+min_influential:2.9139999999999997
+time_consume:53.49274444580078
+min_degree:6
+=======2023-04-03_111851========
+dataset:dataset/facebook.csv
+nodes:2687	 edges:58061	 queryNode:1339
+min_influential:3.154
+time_consume:607.9043958187103
+min_degree:6
+=======2023-04-03_112340========
+dataset:dataset/facebook.csv
+nodes:1003	 edges:33999	 queryNode:2244
+min_influential:5.299
+time_consume:212.51320791244507
+min_degree:6
+=======2023-04-06_093249========
+dataset:dataset/HR_edges_ja.csv
+nodes:11374	 edges:115398	 queryNode:972
+min_influential:1.403
+time_consume:89.45098233222961
+min_degree:6
+=======2023-04-06_093437========
+dataset:dataset/HR_edges_ja.csv
+nodes:1142	 edges:4797	 queryNode:5089
+min_influential:0.6659999999999999
+time_consume:21.940232276916504
+min_degree:3
+=======2023-04-06_094051========
+dataset:dataset/HR_edges_ja.csv
+nodes:6993	 edges:66979	 queryNode:971
+min_influential:0.9909999999999999
+time_consume:118.33275485038757
+min_degree:5
+=======2023-04-06_094856========
+dataset:dataset/HR_edges_ja.csv
+nodes:11038	 edges:68554	 queryNode:3766
+min_influential:0.41800000000000004
+time_consume:296.3910434246063
+min_degree:2
+=======2023-04-06_120821========
+dataset:dataset/HR_edges_ja.csv
+nodes:17871	 edges:209791	 queryNode:99
+min_influential:1.218
+time_consume:6708.39219045639
+min_degree:5
+=======2023-04-07_103556========
+dataset:dataset/Brightkite.csv
+nodes:6815	 edges:53074	 queryNode:77
+min_influential:0.7330000000000001
+time_consume:305.56180810928345
+min_degree:3
+=======2023-04-07_104733========
+dataset:dataset/Brightkite.csv
+nodes:6815	 edges:53074	 queryNode:77
+min_influential:0.7330000000000001
+time_consume:312.91577649116516
+min_degree:3
+=======2023-04-07_105003========
+dataset:dataset/facebook.csv
+nodes:1636	 edges:23357	 queryNode:715
+min_influential:1.666
+time_consume:27.964598417282104
+min_degree:6
+=======2023-04-17_101056========
+dataset:dataset/HR_edges_ja.csv
+nodes:780	 edges:4874	 queryNode:972
+min_influential:0.872
+time_consume:17.976208448410034
+min_degree:3
+=======2023-04-17_101212========
+dataset:dataset/HR_edges_ja.csv
+nodes:780	 edges:4874	 queryNode:972
+min_influential:0.872
+time_consume:18.209753274917603
+min_degree:3
+=======2023-04-17_101258========
+dataset:dataset/HR_edges_ja.csv
+nodes:780	 edges:4874	 queryNode:972
+min_influential:0.872
+time_consume:0.26674437522888184
+min_degree:3
+=======2023-04-18_094941========
+dataset:dataset/Wiki-Vote.csv
+nodes:2392	 edges:71575	 queryNode:1489
+min_influential:0.629
+time_consume:15.240524530410767
+min_degree:3
+=======2023-04-18_095401========
+dataset:dataset/Wiki-Vote.csv
+nodes:2392	 edges:71575	 queryNode:1489
+min_influential:0.831
+time_consume:23.029337644577026
+min_degree:4
+=======2023-04-18_095512========
+dataset:dataset/Wiki-Vote.csv
+nodes:6721	 edges:100339	 queryNode:1489
+min_influential:0.997
+time_consume:50.82802653312683
+min_degree:5
+=======2023-04-18_095735========
+dataset:dataset/Wiki-Vote.csv
+nodes:6721	 edges:100339	 queryNode:1489
+min_influential:1.162
+time_consume:121.37920236587524
+min_degree:6
+=======2023-04-18_100729========
+dataset:dataset/facebook.csv
+nodes:2125	 edges:63098	 queryNode:436
+min_influential:2.9139999999999997
+time_consume:68.14562010765076
+min_degree:6
+=======2023-04-18_100909========
+dataset:dataset/facebook.csv
+nodes:2125	 edges:63098	 queryNode:436
+min_influential:2.446
+time_consume:59.837530851364136
+min_degree:5
+=======2023-04-18_101006========
+dataset:dataset/facebook.csv
+nodes:567	 edges:8616	 queryNode:436
+min_influential:1.979
+time_consume:6.622640132904053
+min_degree:4
+=======2023-04-18_101028========
+dataset:dataset/facebook.csv
+nodes:567	 edges:8616	 queryNode:436
+min_influential:1.504
+time_consume:2.7943506240844727
+min_degree:3
+=======2023-04-18_101527========
+dataset:dataset/facebook.csv
+nodes:3833	 edges:86244	 queryNode:436
+min_influential:3.365
+time_consume:252.09783339500427
+min_degree:7
+=======2023-04-20_154811========
+dataset:dataset/Wiki-Vote.csv
+nodes:7064	 edges:100734	 queryNode:1489
+min_influential:1.324
+time_consume:189.6228585243225
+min_degree:7
+=======2023-05-18_095126========
+dataset:dataset/facebook.csv
+nodes:567	 edges:8616	 queryNode:436
+min_influential:1.504
+time_consume:1.4677479267120361
+min_degree:3
+=======2023-05-18_095214========
+dataset:dataset/facebook.csv
+nodes:567	 edges:8616	 queryNode:436
+min_influential:1.979
+time_consume:14.687873840332031
+min_degree:4
+=======2023-05-18_095959========
+dataset:dataset/facebook.csv
+nodes:2125	 edges:63098	 queryNode:436
+min_influential:2.446
+time_consume:431.1741681098938
+min_degree:5
+=======2023-05-18_104000========
+dataset:dataset/facebook.csv
+nodes:2125	 edges:63098	 queryNode:436
+min_influential:2.9139999999999997
+time_consume:2364.2292132377625
+min_degree:6
+=======2023-05-19_102634========
+dataset:dataset/facebook.csv
+nodes:3833	 edges:86244	 queryNode:436
+min_influential:3.8040000000000003
+time_consume:177.77731728553772
+min_degree:8
+=======2023-05-19_103150========
+dataset:dataset/facebook.csv
+nodes:3833	 edges:86244	 queryNode:436
+min_influential:3.365
+time_consume:237.82157588005066
+min_degree:7
+=======2023-05-19_110316========
+dataset:dataset/facebook.csv
+nodes:3897	 edges:86604	 queryNode:436
+min_influential:4.234
+time_consume:239.24605178833008
+min_degree:9
+=======2023-05-19_110932========
+dataset:dataset/facebook.csv
+nodes:3897	 edges:86604	 queryNode:436
+min_influential:4.618
+time_consume:336.80273723602295
+min_degree:10
+=======2023-05-19_111734========
+dataset:dataset/Wiki-Vote.csv
+nodes:2392	 edges:71575	 queryNode:1489
+min_influential:0.629
+time_consume:11.576626539230347
+min_degree:3
+=======2023-05-19_111836========
+dataset:dataset/Wiki-Vote.csv
+nodes:2392	 edges:71575	 queryNode:1489
+min_influential:0.831
+time_consume:32.85910439491272
+min_degree:4
+=======2023-05-19_112216========
+dataset:dataset/Wiki-Vote.csv
+nodes:6721	 edges:100339	 queryNode:1489
+min_influential:0.997
+time_consume:191.28341674804688
+min_degree:5
+=======2023-05-19_123645========
+dataset:dataset/Wiki-Vote.csv
+nodes:6721	 edges:100339	 queryNode:1489
+min_influential:1.162
+time_consume:4421.802095174789
+min_degree:6

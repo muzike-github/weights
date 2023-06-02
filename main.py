@@ -16,7 +16,7 @@ node_list = [(0, 1, 7), (0, 2, 4), (0, 3, 2), (0, 4, 6), (0, 5, 9),
 def pre_byDistance():
     delete_list = []
     for v in G.nodes:
-        if not nx.has_path(G,v,q) or nx.shortest_path_length(G, v, q) > int(size / 2):
+        if not nx.has_path(G, v, q) or nx.shortest_path_length(G, v, q) > int(size / 2):
             delete_list.append(v)
     for i in delete_list:
         G.remove_node(i)
@@ -30,20 +30,22 @@ def Recursion(C, R, h):
     if len(C) == h and fun.get_min_weight(C) > weight_min:
         H = C[:]
         weight_min = fun.get_min_weight(C)
-        print("更新社区:", H, "最小权重为：", weight_min)
+        print("更新社区:", H, "最小权重为：", weight_min,"runtime:",time.time() - start_time)
     # 剪枝1，对候选集R进行剪枝
     R = fun.reduce1(C, R, h, weight_min)
     # 剪枝2，对部分解C进行剪枝
-    weight_upperbound1 = fun.get_weight_upperbound(C, R, h)
-    weight_upperbound2 = fun.neighbor_reconstruct_weight(C, R, h)
-    upperbound = min(weight_upperbound2, weight_upperbound1)
+    # weight_upperbound1 = fun.get_weight_upperbound(C, R, h)
+    # weight_upperbound2 = fun.neighbor_reconstruct_weight(C, R, h)
+    # upperbound = min(weight_upperbound2, weight_upperbound1)
     # 如果C的节点数小于h并且候选集R不为空，且当前部分解的理想最小权重大于weight
-    if len(C) < h and len(R) != 0 and upperbound > weight_min:
+    if len(C) < h and len(R) != 0: #and upperbound > weight_min:
         # 从候选集R中选一个节点生成两个分支
         # 此节点不应当随意选取(采用节点选择策略可降低计算时间)
-        scoreDict = fun.weight_score(C, R)
-        score_max_node = max(scoreDict, key=scoreDict.get)
-        v = score_max_node
+        # scoreDict = fun.weight_score(C, R)
+        # score_max_node = max(scoreDict, key=scoreDict.get)
+        # v = choose_by_score(C, R)
+        v = choose_random(R)
+        # v = choose_by_weight(C, R)
         CAndV = list(set(C).union({v}))
         RExcludeV = list(set(R).difference({v}))
         RExcludeV2 = list(set(R).difference({v}))
@@ -52,6 +54,29 @@ def Recursion(C, R, h):
             Recursion(CAndV, RExcludeV, h)
         Recursion(C, RExcludeV2, h)
 
+
+
+# 节点选择策略：
+# 从R中取权重最大的（与社区C相连）
+def choose_by_weight(C, R):
+    C_and_R = list(set(C).union(set(R)))
+    C_and_R_graph = nx.subgraph(G, C_and_R)
+    candidate = []
+    for r in R:
+        candidate.append(fc.get_weight(C_and_R_graph, r))
+    return max(candidate)
+
+
+# 随机选取
+def choose_random(R):
+    return R[0]
+
+
+# 连接分数选取：
+def choose_by_score(C, R):
+    scoreDict = fun.weight_score(C, R)
+    score_max_node = max(scoreDict, key=scoreDict.get)
+    return score_max_node
 
 # 主算法
 def WBS(G, q, h):
@@ -90,7 +115,7 @@ dblp:354
 lastfm:81
 '''
 if __name__ == '__main__':
-    q = 7 # 查询节点和社区大小
+    q = 1489  # 查询节点和社区大小
     size = 7
     H = []
     weight_min = 0
@@ -100,14 +125,14 @@ if __name__ == '__main__':
     G = nx.Graph()
     G.add_weighted_edges_from(Glist)
     print(len(G.nodes))
+    print(len(G.edges))
     # 预处理
     pre_byDistance()
-    print(len(G.nodes))
+    start_time = time.time()
     fun = fc.Function(G, q)
     print("数据的节点数量", len(G.nodes))
     print("数据的边数量", len(G.edges))
 
-    start_time = time.time()
     result = WBS(G, q, size)
     end_time = time.time()
     # 最小影响力

@@ -90,6 +90,7 @@ class Function:
             scoreDict[v] = score  # 将对应节点的连接分数存储
             copyC.remove(v)  # 节点v测试完毕，移除
         scoreMaxNode = max(scoreDict, key=scoreDict.get)
+        # print(scoreDict)
         return scoreDict
 
     # 启发式算法计算初始可行社区
@@ -118,7 +119,8 @@ class Function:
             H.append(scoreMaxNode)  # S=S∪{V*}
         if len(H) == 0:
             H = [q]
-        print("权重分数启发式算法得到的可行社区为:", H, "最小权重：", self.get_min_weight(H))
+        print("权重分数启发式算法得到的可行社区为:", H, "最小权重：", self.get_min_weight(H),
+              "最小度为",self.minDegree(nx.subgraph(self.G,H)))
         print("启发式算法结束")
         return H
 
@@ -196,7 +198,7 @@ class Function:
             r_in_C_weight_dict[r] = 0
             for e in nx.neighbors(r_and_C_graph, r):
                 r_in_C_weight_dict[r] += r_and_C_graph.get_edge_data(e, r)['weight']
-        # 排序，取出前h-|C|个有最多邻居数的,并对字典按照降序排列
+        # 排序，取出前h-|C|个有最大权重的,并对字典按照降序排列
         r_in_C_weight_dict = dict(heapq.nlargest(max_node_count, r_in_C_weight_dict.items(), key=lambda x: x[1]))
         # 记录u(u∈C)在C中的权重(后面会对节点进行权重加法)
         weight_u_in_C = {}
