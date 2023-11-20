@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04e658e7-f9b5-4e7b-9c83-41eb44eb534c" name="Default Changelist" comment="增加画图函数和节点选择策略的对比实验">
+    <list default="true" id="04e658e7-f9b5-4e7b-9c83-41eb44eb534c" name="Default Changelist" comment="增加节点选择策略对比图">
+      <change afterPath="$PROJECT_DIR$/core/GreedyD.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/GreedyF.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/function.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/paint.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/paint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paint_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/paint_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/result/experiment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/result/experiment.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +25,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="2MdA7FZHehbYdRxGH4jBc06brn3" />
   <component name="ProjectViewState">
@@ -40,28 +51,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.paint">
-    <configuration name="dataTrans" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="baseline" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataTrans.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="get_node_degree" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="GreedyD" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="baseline" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -73,7 +63,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/get_node_degree.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/GreedyD.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GreedyF" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="baseline" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/GreedyF.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -124,7 +135,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="paint_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="baseline" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -132,11 +143,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/paint_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -148,10 +159,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.paint" />
+        <item itemvalue="Python.GreedyF" />
+        <item itemvalue="Python.GreedyD" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.get_node_degree" />
-        <item itemvalue="Python.dataTrans" />
+        <item itemvalue="Python.paint_test" />
       </list>
     </recent_temporary>
   </component>
@@ -185,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685674694065</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="增加节点选择策略对比图">
+      <created>1685697456808</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685697456808</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,7 +222,8 @@
     <MESSAGE value="使用排序1.0，小优化" />
     <MESSAGE value="修复结果社区存在节点不连通的bug（意外提高了算法的搜索效率），增加距离剪枝" />
     <MESSAGE value="增加画图函数和节点选择策略的对比实验" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加画图函数和节点选择策略的对比实验" />
+    <MESSAGE value="增加节点选择策略对比图" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加节点选择策略对比图" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

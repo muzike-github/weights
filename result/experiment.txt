@@ -505,3 +505,39 @@ nodes:6721	 edges:100339	 queryNode:1489
 min_influential:1.162
 time_consume:1360.3184089660645
 min_degree:6
+=======2023-06-27_103505========
+dataset:dataset/Wiki-Vote.csv
+nodes:6721	 edges:100339	 queryNode:1489
+min_influential:1.162
+time_consume:91.45718812942505
+min_degree:6
+=======2023-07-18_175128========
+dataset:dataset/facebook.csv
+nodes:3897	 edges:86604	 queryNode:436
+min_influential:4.234
+time_consume:253.51573157310486
+min_degree:9
+=======2023-07-18_181249========
+dataset:dataset/facebook.csv
+nodes:4039	 edges:88234	 queryNode:436
+min_influential:5.877
+time_consume:1042.7403073310852
+min_degree:13
+=======2023-07-18_215017========
+dataset:dataset/facebook.csv
+nodes:211	 edges:1997	 queryNode:715
+min_influential:1.233
+time_consume:2.1025116443634033
+min_degree:4
+=======2023-07-18_221616========
+dataset:dataset/bitcoinJa.csv
+nodes:4699	 edges:19720	 queryNode:4683
+min_influential:3.774
+time_consume:9.580935955047607
+min_degree:6
+=======2023-07-18_223122========
+dataset:dataset/Wiki-Vote.csv
+nodes:5995	 edges:99256	 queryNode:25
+min_influential:1.0699999999999998
+time_consume:18.010401725769043
+min_degree:6

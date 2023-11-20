@@ -43,8 +43,8 @@ def Recursion(C, R, h):
         # 此节点不应当随意选取(采用节点选择策略可降低计算时间)
         # scoreDict = fun.weight_score(C, R)
         # score_max_node = max(scoreDict, key=scoreDict.get)
-        # v = choose_by_score(C, R)
-        v = choose_random(R)
+        v = choose_by_score(C, R)
+        # v = choose_random(R)
         # v = choose_by_weight(C, R)
         CAndV = list(set(C).union({v}))
         RExcludeV = list(set(R).difference({v}))
@@ -115,7 +115,7 @@ dblp:354
 lastfm:81
 '''
 if __name__ == '__main__':
-    q = 1489  # 查询节点和社区大小
+    q = 25  # 查询节点和社区大小
     size = 7
     H = []
     weight_min = 0
@@ -139,8 +139,11 @@ if __name__ == '__main__':
     min_influential = fun.get_min_weight(H)
     # 最小度
     min_degree = fun.minDegree(nx.subgraph(G, H))
+    # 总影响力值
+    total_influence = fun.get_total_weight(nx.subgraph(G,H))
     print("耗时", end_time - start_time)
     print("社区的最小权重", min_influential,
-          "最小度", min_degree)
+          "最小度", min_degree,
+          "总影响力值",total_influence)
     save.save_txt(filename, len(G.nodes), len(G.edges), q, min_influential, end_time - start_time, min_degree)
     fc.paint(Glist, result, "weightOnly")

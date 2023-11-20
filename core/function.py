@@ -65,8 +65,17 @@ class Function:
             weights.append(weight)
         return min(weights)
 
-        # 计算权重分数用以启发式算法中选取节点
+    # 计算社区的总权重
+    def get_total_weight(self, H):
+        graph = nx.subgraph(self.G, H)
+        weight = 0
+        for i in graph:
+            for j in nx.neighbors(graph, i):  # 遍历节点的所有邻居
+                weight += self.G.get_edge_data(i, j)['weight']
 
+        return weight
+
+    # 计算权重分数用以启发式算法中选取节点
     def weight_score(self, C, R):
         copyC = C.copy()  # 用copyC 代替C的所有操作,否则求完连接分数后C会改变
         scoreDict = {}  # 字典保存R中每个节点的连接分数

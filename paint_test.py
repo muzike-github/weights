@@ -2,10 +2,11 @@ import networkx as nx
 
 import core.function as fun
 import core.fileHandle as fh
-
-Glist = fh.csvResolve('dataset/Wiki-Vote.csv')
+import core.function as fc
+Glist = fh.csvResolve('dataset/bitcoinJa.csv')
 # fun.paint(Glist, [], "测试")
-fun.paint(Glist,[5430, 5429, 68, 1549, 2237, 2565, 3352],"测试")
+# 计算
+fun.paint(Glist,[4733, 4704, 4688, 4686, 4684, 4682, 4683],"测试")
 
 
 
