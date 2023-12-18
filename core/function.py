@@ -26,9 +26,10 @@ def paint(GList, H, str):
     plt.rcParams['font.sans-serif'] = ['SimHei']
     plt.title(str)
     plt.show()
+    # plt.savefig(str + ".jpg", bbox_inches='tight', facecolor='w')
 
 
-# 计算节点u在图C中的权重,参数C的类型为networkx的图
+# 计算节点u在图G中的权重,参数G的类型为networkx的图
 def get_weight(G, u):
     weight = 0
     for i in nx.neighbors(G, u):
@@ -58,11 +59,14 @@ class Function:
     def get_min_weight(self, H):
         graph = nx.subgraph(self.G, H)
         weights = []
+        dic = {}
         for i in graph:
             weight = 0
             for j in nx.neighbors(graph, i):  # 遍历节点的所有邻居
                 weight += self.G.get_edge_data(i, j)['weight']
             weights.append(weight)
+            dic[i] = weight
+        sorted(dic.items(), key=lambda x: x[0], reverse=False)
         return min(weights)
 
         # 计算权重分数用以启发式算法中选取节点
@@ -104,6 +108,7 @@ class Function:
             node = None
             for i in nx.neighbors(self.G, H[0]):
                 if self.G.degree(i) > degree:
+                    degree = self.G.degree(i)
                     node = i
             if node is None:
                 print("第二个节点为空，有问题")
@@ -114,14 +119,13 @@ class Function:
             # 找出G\H中连接分数最大的节点V*
             R = list(set(self.G.nodes).difference(set(H)))
             soreDict = self.weight_score(H, R)
-            # print(soreDict)
             scoreMaxNode = max(soreDict, key=soreDict.get)
             H.append(scoreMaxNode)  # S=S∪{V*}
         if len(H) == 0:
             H = [q]
         print("权重分数启发式算法得到的可行社区为:", H, "最小权重：", self.get_min_weight(H),
               "最小度为", self.minDegree(nx.subgraph(self.G, H)))
-        print("启发式算法结束")
+        print("===========启发式算法结束===========")
         return H
 
     # 距离缩减

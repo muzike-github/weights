@@ -35,6 +35,7 @@ def csvResolve(filename):
             node1 = int(row[0])
             node2 = int(row[1])
             weight = float(row[2])
+            weight = round(weight, 3)
             Glist.append((node1, node2, weight))
     # print(Glist)
     return Glist

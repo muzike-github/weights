@@ -11,16 +11,16 @@ def get_nodes_degree(filename):
     nodes = fh.csvResolve(filename)
     G = nx.Graph()
     G.add_weighted_edges_from(nodes)
-    print("the count of nodes:",len(G.nodes()))
-    print("the count of edges:",len(G.edges()))
+    print("the count of nodes:", len(G.nodes()))
+    print("the count of edges:", len(G.edges()))
     dic = {}
     for i in G.nodes:
         dic[i] = nx.degree(G, i)
-    sort_list=sorted(dic.items(),key=lambda x:x[1],reverse=True)
+    sort_list = sorted(dic.items(), key=lambda x: x[1], reverse=True)
     return sort_list
 
 
-filename = "../dataset/facebook.csv"
-node_dic=get_nodes_degree(filename)
+filename = "../dataset/wiki-vote.csv"
+node_dic = get_nodes_degree(filename)
 print(node_dic)
 print(len(node_dic))

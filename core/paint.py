@@ -12,6 +12,7 @@ def algorithm_quality():
     x_list = ['ssbo', 'FaceBook', 'WikiVote', 'HR_edges']  # 横坐标，代表数据集
     y1 = [0.377, 1.233, 0.365, 0.665]  # FPB算法
     y2 = [0.232, 1, 0.317, 0.311]  # BRB算法
+    y3 = []
     width = 0.35
     x = np.arange(len(x_list))
     plt.bar(x, y1, width=width, label="FPB", )
@@ -81,6 +82,7 @@ def facebook_different_strategy():
     plt.xlabel('size')
     plt.ylabel('runtime(s)')
     plt.yticks(y_tick)
+    plt.title("facebook")
     plt.show()
 
 
@@ -103,7 +105,11 @@ def wiki_vote_different_strategy():
     plt.xlabel('size')
     plt.ylabel('runtime(s)')
     plt.yticks(y_tick)
+    plt.title("wiki-vote")
     plt.show()
+
+
+
 
 
 def facebook_nodeChoose_strategy():
@@ -144,5 +150,7 @@ def wiki_vote_nodeChoose_strategy():
     plt.show()
 
 
-facebook_nodeChoose_strategy()
-wiki_vote_nodeChoose_strategy()
+# facebook_nodeChoose_strategy()
+# wiki_vote_nodeChoose_strategy()
+facebook_different_strategy()
+wiki_vote_different_strategy()

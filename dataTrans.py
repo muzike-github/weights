@@ -7,7 +7,7 @@ import csv
 
 
 # 处理无权重txt格式数据集，转化为csv格式
-def txt_no_weight_trans(filename, output_filename):
+def txt_trans_csv(filename, output_filename):
     f = open(filename)
     line = f.readline()
     Glist = []
@@ -48,7 +48,7 @@ def txt_no_weight_trans(filename, output_filename):
 
 
 # 将带有权重的txt数据集直接转化为csv格式
-def txt_weight_trans(filename, output_filename):
+def txt_weight_trans_csv(filename, output_filename):
     f = open(filename)
     line = f.readline()
     Glist = []
@@ -119,3 +119,4 @@ def csv_trans(filename, output_filename):
 # csv_trans("dataset/bitcoin2.csv", "bitcoinJa.csv")
 # csv_trans("dataset/emailWeight.csv", "emailWeightJa.csv")
 # csv_trans("dataset/HR_edges.csv", "HR_edges_ja.csv")
+txt_trans_csv("dataset/dblp.txt", "dblp_ja.csv")

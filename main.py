@@ -43,8 +43,8 @@ def Recursion(C, R, h):
         # 此节点不应当随意选取(采用节点选择策略可降低计算时间)
         # scoreDict = fun.weight_score(C, R)
         # score_max_node = max(scoreDict, key=scoreDict.get)
-        # v = choose_by_score(C, R)
-        v = choose_random(R)
+        v = choose_by_score(C, R)
+        # v = choose_random(R)
         # v = choose_by_weight(C, R)
         CAndV = list(set(C).union({v}))
         RExcludeV = list(set(R).difference({v}))
@@ -115,11 +115,11 @@ dblp:354
 lastfm:81
 '''
 if __name__ == '__main__':
-    q = 1489  # 查询节点和社区大小
+    q = eval(input("查询节点:"))  # 查询节点和社区大小
     size = 7
     H = []
     weight_min = 0
-    filename = "dataset/Wiki-Vote.csv"
+    filename = "dataset/wiki-vote.csv"
     Glist = fh.csvResolve(filename)
     # Glist = node_list
     G = nx.Graph()
