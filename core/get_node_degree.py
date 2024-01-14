@@ -20,7 +20,7 @@ def get_nodes_degree(filename):
     return sort_list
 
 
-filename = "../dataset/wiki-vote.csv"
+filename = "../dataset/facebook.csv"
 node_dic = get_nodes_degree(filename)
 print(node_dic)
 print(len(node_dic))

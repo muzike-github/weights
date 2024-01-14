@@ -142,4 +142,4 @@ for i in range(len(nodes)):
     print("result:", result,
           "最小影响力：", fun.get_min_weight(result)
           , "最小度：", fun.minDegree(nx.subgraph(graph, result)))
-    function.paint(Glist, result, str(nodes[i]))
+    # function.paint(Glist, result, str(nodes[i]))

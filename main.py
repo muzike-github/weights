@@ -13,13 +13,14 @@ node_list = [(0, 1, 7), (0, 2, 4), (0, 3, 2), (0, 4, 6), (0, 5, 9),
 
 
 # 根据距离对R进行预处理
-def pre_byDistance():
+def pre_byDistance(G):
     delete_list = []
     for v in G.nodes:
         if not nx.has_path(G, v, q) or nx.shortest_path_length(G, v, q) > int(size / 2):
             delete_list.append(v)
     for i in delete_list:
         G.remove_node(i)
+    return G
 
 
 # 递归函数,weight是当前以求得的最优社区的最小权重
@@ -119,7 +120,7 @@ if __name__ == '__main__':
     size = 7
     H = []
     weight_min = 0
-    filename = "dataset/wiki-vote.csv"
+    filename = "dataset/Brightkite.csv"
     Glist = fh.csvResolve(filename)
     # Glist = node_list
     G = nx.Graph()
@@ -127,7 +128,7 @@ if __name__ == '__main__':
     print(len(G.nodes))
     print(len(G.edges))
     # 预处理
-    pre_byDistance()
+    G = pre_byDistance(G)
     start_time = time.time()
     fun = fc.Function(G, q)
     print("数据的节点数量", len(G.nodes))

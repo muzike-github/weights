@@ -1,11 +1,12 @@
 import time
-
+import os
 import networkx as nx
 import random
 import math
 from core import function
 from core import fileHandle
 import pandas as pd
+import openpyxl
 
 
 def get_weight_score(G, C, R):
@@ -35,7 +36,13 @@ def get_weight_score(G, C, R):
 
 
 def initial_solution(graph, query_node, size):
-    # 初始化一个包含种子节点的社区,(使用连接分数算法)
+    """
+    初始化一个包含种子节点的社区,(使用连接分数算法)
+    :param graph:
+    :param query_node:
+    :param size:
+    :return: 初始解
+    """
     partial_solution = [query_node]
     # 候选节点，每次加入新节点，都把所有的邻居节点加入进去（去重）
     candidate = list(nx.neighbors(graph, query_node))
@@ -71,6 +78,7 @@ graph:母图
 community：需要计算最小影响力的社区的节点集合
 '''
 
+
 def calculate_community_weight(graph, community):
     # 计算社区内边的权重之和
     community_graph = nx.subgraph(graph, community)
@@ -86,6 +94,38 @@ def calculate_community_weight(graph, community):
     return min(weights)
 
 
+def get_node_weight(graph, community, node):
+    '''
+    得到node在community中的权重
+    :param graph:
+    :param community:
+    :param node:
+    :return: 权重
+    '''
+    graph_part = nx.subgraph(graph, community)
+    weight = 0
+    for u in nx.neighbors(graph_part, node):
+        weight += G.get_edge_data(u, node)['weight']
+    return weight
+
+
+def get_min_node(graph, community):
+    '''
+    移除当前社区中影响力最小的节点
+    :param graph:
+    :param community:
+    :return: 返回最小的节点
+    '''
+    node = community[0]
+    min_weight = float("inf")
+    for u in community:
+        temp_weight = get_node_weight(graph, community, u)
+        if temp_weight < min_weight:
+            min_weight = temp_weight
+            node = u
+    return node
+
+
 def simulated_annealing(graph, query_node, size, initial_temperature, min_temperature, cooling_rate, iterations):
     current_solution = initial_solution(graph, query_node, size)
     current_weight = calculate_community_weight(graph, current_solution)
@@ -97,45 +137,53 @@ def simulated_annealing(graph, query_node, size, initial_temperature, min_temper
 
     temperature = initial_temperature
     while temperature > min_temperature:
+        # 对每次温度进行迭代
         for _ in range(iterations):
             new_solution = current_solution.copy()
             # 对当前解进行进行随机扰动得到新解，这里从社区中随机选择一个节点移除，并随机选择一个新节点加入社区
             # todo 此处以何种方式来移除节点和新加入节点？（先使用完全随机）
-            # 移除节点
-            remove_node = random.choice(list(set(new_solution).difference({query_node})))
+            # 移除节点（随机移除）
+            # remove_node = random.choice(list(set(new_solution).difference({query_node})))
+            # 移除影响力最小的节点
+            remove_node = get_min_node(graph, new_solution)
+            if remove_node == query_node:
+                # continue
+                remove_node = random.choice(list(set(new_solution).difference({query_node})))
             new_solution.remove(remove_node)
+            # 增加节点
             candidate_neighbors = []
             for v in new_solution:
                 for nb in nx.neighbors(graph, v):
                     if nb not in new_solution:
                         candidate_neighbors.append(nb)
-            # 增加节点
             append_node = random.choice(list(candidate_neighbors))
-            print(append_node)
+            # print(append_node)
             new_solution.append(append_node)
+
             new_weight = calculate_community_weight(graph, new_solution)
             # 根据接受概率决定是否接受新解,
             dE = new_weight - current_weight
+
             # 如果产生更优结果，则接受新解，
             if dE > 0:
                 current_solution = new_solution
                 current_weight = new_weight
+                # 如果新解优于最优结果，则更新最优值
+                if current_weight > best_weight:
+                    best_solution = current_solution.copy()
+                    best_weight = current_weight
+                    print("更新社区，影响力为：", best_weight)
             # 否则，根据概率选择是否接受新解
             else:
+                # print("接受概率：", math.exp(dE / temperature), "random:", random.random())
                 if random.random() < math.exp(dE / temperature):
+                    # print("接受较差解", math.exp(dE / temperature))
                     current_solution = new_solution
                     current_weight = new_weight
-
-            # 更新最佳解
-            if new_weight > best_weight:
-                best_solution = new_solution.copy()
-                best_weight = new_weight
-                print("更新社区，影响力为：", best_weight)
-
             # 降低温度
-
-        temperature *= 1 - cooling_rate  # 线性降温
+        temperature *= cooling_rate  # 线性降温
         # temperature = temperature * cooling_rate  # 指数降温
+        # print("temperature:",temperature)
 
     return best_solution, best_weight
 
@@ -154,28 +202,35 @@ def log(query_node, result_community, weight, degree):
         f.writelines("最小度：" + str(degree))
 
 
-def write_to_excel(algorithm_parameters, weights, degrees, compare_weights, compare_degrees):
+def write_to_excel(record_filename, algorithm_parameters, weights, degrees,
+                   compare_weights, compare_degrees, initial_temperature, runtime_one_node):
+    # 判断文件是否存在，文件不存在则创建(使用openpyxl)
+    if not os.path.exists(record_filename):
+        wb = openpyxl.Workbook()
+        wb.save(record_filename)
+
     # 读取原文件内容
-    df = pd.read_excel("record.xlsx", index_col=0)
+    df = pd.read_excel(record_filename, index_col=0, engine="openpyxl")
     # 增加头部(模拟退火的参数)
     head = algorithm_parameters
     df = df._append(head)
     # 增加数据
-    data = pd.DataFrame([compare_weights, weights, compare_degrees, degrees],
-                        index=['FPB_w', 'sa_w', 'FPB_d', 'sa_d'])
+    data = pd.DataFrame([compare_weights, weights, compare_degrees, degrees, runtime_one_node],
+                        index=['FPB_w', 'sa_w' + str(initial_temperature), 'FPB_d', 'sa_d', 'runtime'])
     df = df._append(data, ignore_index=False)
     # 写入
-    df.to_excel("record.xlsx", sheet_name="Sheet2", index=True, engine="openpyxl")
+    df.to_excel(record_filename, sheet_name="Sheet2", index=True, engine="openpyxl")
     # 写入空行
 
 
 def run(query_nodes):
     weights = []
     degrees = []
+    runtime_node = []
     for i in range(len(query_nodes)):
         # query_node = int(input("查询节点:"))
         query_node = query_nodes[i]
-        print("查询节点", query_node)
+        print("查询节点：", query_node, "度数为：", nx.degree(G, query_node))
         if query_node == -1:
             break
         start_time = time.time()
@@ -187,38 +242,85 @@ def run(query_nodes):
         print("耗时：", end_time - start_time)
         weights.append(best_weight)
         degrees.append(best_degree)
-    return weights, degrees
+        runtime_node.append(round(end_time - start_time, 0))
+        # paint
+        function.paint(Glist, best_community, str(runtime_node[i]))
+    return weights, degrees, runtime_node
+
+
+# 数据预处理，移除距离大于size-1的节点
+def pre_byDistance(G, q, size):
+    delete_list = []
+    for v in G.nodes:
+        if not nx.has_path(G, v, q) or nx.shortest_path_length(G, v, q) > int(size / 2):
+            delete_list.append(v)
+    for i in delete_list:
+        G.remove_node(i)
+    return G
 
 
 # 创建一个简单的图
 G = nx.Graph()
-filename = "wiki-vote.csv"
+
+# filename = "bitcoin.csv"
+# record_filename = "bitcoin.xlsx"
+
+filename = "Brightkite.csv"
+record_filename = "./result/Brightkite_100.xls"
 Glist = fileHandle.csvResolve("../dataset/" + filename)
 G.add_weighted_edges_from(Glist)
 
-initial_temperature = int(input("初始温度："))
-min_temperature = 1
-cooling_rate = float(input("冷却速率："))
-iterations = int(input("每个温度迭代次数："))
-size = 7
-# 初始化类
-fun = function.Function(G, -1)
+# 写入文件参数
 
 # facebook
 # query_nodes = [715, 751, 430, 436, 1026, 1339, 2203, 2336, 2244, 0]
 # wiki-vote
-query_nodes = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
+# query_nodes = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
 # bitcoin
 # query_nodes = [3, 4553, 4683, 1860, 3598, 3744, 2942, 546, 1018, 905]
+query_nodes = [1, 2, 3]
 
-weights, degrees = run(query_nodes)
-# 算法参数
-algorithm_parameter = pd.DataFrame(
-    [['initial_temperature', 'min_temperature', 'cooling_rate', 'iterations', 'size', 'filename'],
-     [initial_temperature, min_temperature, cooling_rate, iterations, size, filename]], index=['parameter', 'value'])
-# weights = [0.083, 0.377, 0.497, 0.71, 1.069, 1.162, 0.869, 1.13, 1.214, 1.527]
-# degrees = [3, 4, 5, 5, 6, 6, 5, 6, 6, 6]
-# 精确解
-compare_weights = [0.083, 0.377, 0.497, 0.71, 1.069, 1.162, 0.869, 1.13, 1.214, 1.527]
-compare_degrees = [3, 4, 5, 5, 6, 6, 5, 6, 6, 6]
-write_to_excel(algorithm_parameter, weights, degrees, compare_weights, compare_degrees)
+# 温度为[100,300,600,1000,1500,2000,3000]
+
+# temperatures = [100, 300, 600, 1000, 1500, 2000, 3000]
+temperatures = [100]
+for i in range(len(temperatures)):
+    # 设置退火算法参数
+    initial_temperature = temperatures[i]
+    print("当前温度", initial_temperature)
+    min_temperature = 1
+    cooling_rate = 0.95
+    iterations = 100
+    cool_type = "非线性"
+    size = 7
+
+    # 初始化类
+    print("原始节点数：", len(G.nodes()))
+    fun = function.Function(G, -1)
+    G = pre_byDistance(G, i, size)
+    print("修剪后节点数：", len(G.nodes()))
+
+    start_time = time.time()
+    weights, degrees, runtime_node = run(query_nodes)
+    end_time = time.time()
+    runtime = end_time - start_time
+    # 算法参数
+    algorithm_parameter = pd.DataFrame(
+        [['initial_temperature', 'min_temperature', 'cooling_rate', 'iterations', 'size', 'filename', 'cool-type',
+          'runtime'],
+         [initial_temperature, min_temperature, cooling_rate, iterations, size, filename, cool_type, runtime]],
+        index=['parameter', 'value'])
+    # 增加单个节点的计算时间
+
+    # 精确解（facebook）
+    # compare_weights = [1.233, 1.211, 2.118, 2.91, 2.27, 3.154, 3.386, 4.215, 5.299, 1.236]
+    # compare_degrees = [4, 4, 6, 6, 6, 6, 6, 6, 6, 6]
+    # # 精确解（wiki-vote）
+    # compare_weights = [0.083, 0.377, 0.497, 0.71, 1.069, 1.162, 0.869, 1.13, 1.214, 1.527]
+    # compare_degrees = [3, 4, 5, 5, 6, 6, 5, 6, 6, 6]
+    # 精确解（bitcoin）
+    compare_weights = [0.365, 0.662, 3.774, 0.588, 0.659, 0.96, 0.844, 0.618, 0.72, 0.84]
+    compare_degrees = [4, 6, 6, 6, 5, 6, 6, 5, 6, 6]
+    write_to_excel(record_filename, algorithm_parameter, weights, degrees, compare_weights, compare_degrees,
+                   initial_temperature, runtime_node)
+

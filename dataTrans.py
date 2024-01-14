@@ -115,8 +115,8 @@ def csv_trans(filename, output_filename):
 # 将无权图处理为加权图
 # txt_no_weight_trans("dataset/facebook.txt", "facebook.csv")
 # 将加权图直接处理为csv格式
-# txt_weight_trans("dataset/bitcoin2.csv", "bitcoinJa.csv")
-# csv_trans("dataset/bitcoin2.csv", "bitcoinJa.csv")
+# txt_weight_trans("dataset/bitcoin2.csv", "bitcoin.csv")
+# csv_trans("dataset/bitcoin2.csv", "bitcoin.csv")
 # csv_trans("dataset/emailWeight.csv", "emailWeightJa.csv")
 # csv_trans("dataset/HR_edges.csv", "HR_edges_ja.csv")
-txt_trans_csv("dataset/dblp.txt", "dblp_ja.csv")
+txt_trans_csv("dataset/Brightkite_edges.txt", "Brightkite.csv")
