@@ -4,21 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04e658e7-f9b5-4e7b-9c83-41eb44eb534c" name="Default Changelist" comment="新增模拟退火和随机游走算法">
-      <change afterPath="$PROJECT_DIR$/approximate/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/approximate/weight_random_walk_visited.py" afterDir="false" />
+    <list default="true" id="04e658e7-f9b5-4e7b-9c83-41eb44eb534c" name="Default Changelist" comment="修改模拟退火算法的扰动策略，效果较好">
+      <change afterPath="$PROJECT_DIR$/approximate/copy_for_test/simulated_annealing_bit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/copy_for_test/simulated_annealing_face.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/copy_for_test/simulated_annealing_wiki.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/bitcoin.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/facebook.csv_7_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/facebook.csv_7_300.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/facebook.csv_7_500.xls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/approximate/record.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/approximate/simulated_annealing.py" beforeDir="false" afterPath="$PROJECT_DIR$/approximate/simulated_annealing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/approximate/weighg_random_walk2.0.py" beforeDir="false" afterPath="$PROJECT_DIR$/approximate/weighg_random_walk2.0.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/approximate/weight_random_walk.py" beforeDir="false" afterPath="$PROJECT_DIR$/approximate/weight_random_walk.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/approximate/weight_random_walk1.0.py" beforeDir="false" afterPath="$PROJECT_DIR$/approximate/weight_random_walk1.0.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/get_node_degree.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/get_node_degree.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataTrans.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataTrans.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/bitcoin2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/bitcoinJa.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/bitcoin.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/approximate/weight_random_walk_visited.py" beforeDir="false" afterPath="$PROJECT_DIR$/approximate/weight_random_walk_visited.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +45,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/muzike/PycharmProjects/weights/approximate&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/muzike/PycharmProjects/weights/approximate/result3&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -60,13 +56,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\muzike\PycharmProjects\weights\approximate\result3" />
+      <recent name="C:\Users\muzike\PycharmProjects\weights\approximate\copy_for_test" />
       <recent name="C:\Users\muzike\PycharmProjects\weights\approximate" />
       <recent name="C:\Users\muzike\PycharmProjects\weights\dataset" />
       <recent name="D:\CommunitySearchCode\weights\core" />
-      <recent name="D:\CommunitySearchCode\weights\dataset" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.simulated_annealing">
+  <component name="RunManager" selected="Python.weight_random_walk_visited">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" singleton="false" nameIsGenerated="true">
       <module name="baseline" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -111,7 +108,73 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="simulated_annealing" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
+    <configuration name="simulated_annealing_bit" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="baseline" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/approximate/copy_for_test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/approximate/copy_for_test/simulated_annealing_bit.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="simulated_annealing_face" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
+      <module name="baseline" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/approximate/copy_for_test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/approximate/copy_for_test/simulated_annealing_face.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="simulated_annealing_wiki" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
+      <module name="baseline" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/approximate/copy_for_test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/approximate/copy_for_test/simulated_annealing_wiki.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="weight_random_walk_visited" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="baseline" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -124,73 +187,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/approximate/simulated_annealing.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="baseline" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="weighg_random_walk2.0" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="baseline" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/approximate" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/approximate/weighg_random_walk2.0.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="weight_random_walk" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="baseline" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/approximate" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/approximate/weight_random_walk.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/approximate/weight_random_walk_visited.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -201,19 +198,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.test" />
       <item itemvalue="Python.pagerank" />
-      <item itemvalue="Python.weighg_random_walk2.0" />
-      <item itemvalue="Python.weight_random_walk" />
-      <item itemvalue="Python.simulated_annealing" />
+      <item itemvalue="Python.weight_random_walk_visited" />
+      <item itemvalue="Python.simulated_annealing_bit" />
+      <item itemvalue="Python.simulated_annealing_face" />
+      <item itemvalue="Python.simulated_annealing_wiki" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.simulated_annealing" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.weight_random_walk" />
+        <item itemvalue="Python.weight_random_walk_visited" />
         <item itemvalue="Python.pagerank" />
-        <item itemvalue="Python.weighg_random_walk2.0" />
+        <item itemvalue="Python.simulated_annealing_bit" />
+        <item itemvalue="Python.simulated_annealing_wiki" />
+        <item itemvalue="Python.simulated_annealing_face" />
       </list>
     </recent_temporary>
   </component>
@@ -246,7 +243,7 @@
       <workItem from="1703310222918" duration="20184000" />
       <workItem from="1704198927593" duration="199000" />
       <workItem from="1704798063373" duration="4625000" />
-      <workItem from="1705128451045" duration="19958000" />
+      <workItem from="1705128451045" duration="53207000" />
     </task>
     <task id="LOCAL-00001" summary="使用排序1.0，小优化">
       <created>1678089624401</created>
@@ -283,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702882165264</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="修改模拟退火算法的扰动策略，效果较好">
+      <created>1705234953324</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1705234953324</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +309,8 @@
     <MESSAGE value="修复结果社区存在节点不连通的bug（意外提高了算法的搜索效率），增加距离剪枝" />
     <MESSAGE value="增加画图函数和节点选择策略的对比实验" />
     <MESSAGE value="新增模拟退火和随机游走算法" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增模拟退火和随机游走算法" />
+    <MESSAGE value="修改模拟退火算法的扰动策略，效果较好" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改模拟退火算法的扰动策略，效果较好" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -334,27 +339,30 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/weights$paint.coverage" NAME="paint Coverage Results" MODIFIED="1688458845286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
-    <SUITE FILE_PATH="coverage/weights$weight_random_walk1_0.coverage" NAME="weight_random_walk1.0 Coverage Results" MODIFIED="1705220236895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
-    <SUITE FILE_PATH="coverage/weights$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1703312994413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
-    <SUITE FILE_PATH="coverage/weights$random_walk.coverage" NAME="random_walk Coverage Results" MODIFIED="1701336628363" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
     <SUITE FILE_PATH="coverage/weights$dataTrans.coverage" NAME="dataTrans Coverage Results" MODIFIED="1704798271574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/weights$pagerank__1_.coverage" NAME="pagerank (1) Coverage Results" MODIFIED="1702268523148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
-    <SUITE FILE_PATH="coverage/weights$weight_random_walk_visited.coverage" NAME="weight_random_walk_visited Coverage Results" MODIFIED="1705219517129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
-    <SUITE FILE_PATH="coverage/weights$function.coverage" NAME="function Coverage Results" MODIFIED="1701761326505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
+    <SUITE FILE_PATH="coverage/weights$weight_random_walk_visited.coverage" NAME="weight_random_walk_visited Coverage Results" MODIFIED="1706272986612" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
     <SUITE FILE_PATH="coverage/weights$weight_random_walk.coverage" NAME="weight_random_walk Coverage Results" MODIFIED="1705221178927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
-    <SUITE FILE_PATH="coverage/weights$Greedy.coverage" NAME="Greedy Coverage Results" MODIFIED="1687679232960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
-    <SUITE FILE_PATH="coverage/weights$simulated_annealing.coverage" NAME="simulated_annealing Coverage Results" MODIFIED="1705234537166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
-    <SUITE FILE_PATH="coverage/weights$paint_test.coverage" NAME="paint_test Coverage Results" MODIFIED="1693191179127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/weights$get_node_degree.coverage" NAME="get_node_degree Coverage Results" MODIFIED="1705129328517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
-    <SUITE FILE_PATH="coverage/weights$pagerank.coverage" NAME="pagerank Coverage Results" MODIFIED="1705220368896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
     <SUITE FILE_PATH="coverage/weights$test.coverage" NAME="test Coverage Results" MODIFIED="1705233250931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/weights$GreedyF.coverage" NAME="GreedyF Coverage Results" MODIFIED="1689652775978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
+    <SUITE FILE_PATH="coverage/weights$pagerank.coverage" NAME="pagerank Coverage Results" MODIFIED="1706272830641" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
     <SUITE FILE_PATH="coverage/weights$approximate_solution.coverage" NAME="approximate_solution Coverage Results" MODIFIED="1701760480886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
     <SUITE FILE_PATH="coverage/weights$main.coverage" NAME="main Coverage Results" MODIFIED="1704799498617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/weights$weighg_random_walk2_0.coverage" NAME="weighg_random_walk2.0 Coverage Results" MODIFIED="1705220358671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
     <SUITE FILE_PATH="coverage/weights$GreedyD__1_.coverage" NAME="GreedyD (1) Coverage Results" MODIFIED="1687764374871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
-    <SUITE FILE_PATH="coverage/weights$ACO.coverage" NAME="ACO Coverage Results" MODIFIED="1701348814127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
     <SUITE FILE_PATH="coverage/weights$weight_random_walk__1_.coverage" NAME="weight_random_walk (1) Coverage Results" MODIFIED="1701587779091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
+    <SUITE FILE_PATH="coverage/weights$paint.coverage" NAME="paint Coverage Results" MODIFIED="1688458845286" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
+    <SUITE FILE_PATH="coverage/weights$weight_random_walk1_0.coverage" NAME="weight_random_walk1.0 Coverage Results" MODIFIED="1705220236895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
+    <SUITE FILE_PATH="coverage/weights$simulated_annealing_wiki.coverage" NAME="simulated_annealing_wiki Coverage Results" MODIFIED="1706254877546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate/copy_for_test" />
+    <SUITE FILE_PATH="coverage/weights$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1703312994413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
+    <SUITE FILE_PATH="coverage/weights$random_walk.coverage" NAME="random_walk Coverage Results" MODIFIED="1701336628363" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
+    <SUITE FILE_PATH="coverage/weights$pagerank__1_.coverage" NAME="pagerank (1) Coverage Results" MODIFIED="1702268523148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
+    <SUITE FILE_PATH="coverage/weights$function.coverage" NAME="function Coverage Results" MODIFIED="1701761326505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
+    <SUITE FILE_PATH="coverage/weights$simulated_annealing_face.coverage" NAME="simulated_annealing_face Coverage Results" MODIFIED="1706253782618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate/copy_for_test" />
+    <SUITE FILE_PATH="coverage/weights$Greedy.coverage" NAME="Greedy Coverage Results" MODIFIED="1687679232960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
+    <SUITE FILE_PATH="coverage/weights$simulated_annealing.coverage" NAME="simulated_annealing Coverage Results" MODIFIED="1706246457281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
+    <SUITE FILE_PATH="coverage/weights$paint_test.coverage" NAME="paint_test Coverage Results" MODIFIED="1693191179127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/weights$simulated_annealing_bit.coverage" NAME="simulated_annealing_bit Coverage Results" MODIFIED="1706254880460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate/copy_for_test" />
+    <SUITE FILE_PATH="coverage/weights$GreedyF.coverage" NAME="GreedyF Coverage Results" MODIFIED="1689652775978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
+    <SUITE FILE_PATH="coverage/weights$weighg_random_walk2_0.coverage" NAME="weighg_random_walk2.0 Coverage Results" MODIFIED="1705220358671" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
+    <SUITE FILE_PATH="coverage/weights$ACO.coverage" NAME="ACO Coverage Results" MODIFIED="1701348814127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/approximate" />
   </component>
 </project>

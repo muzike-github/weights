@@ -203,7 +203,8 @@ def log(query_node, result_community, weight, degree):
 
 
 def write_to_excel(record_filename, algorithm_parameters, weights, degrees,
-                   compare_weights, compare_degrees, initial_temperature, runtime_one_node):
+                   compare_weights, compare_degrees, initial_temperature, runtime_one_node,
+                   relative_error):
     # 判断文件是否存在，文件不存在则创建(使用openpyxl)
     if not os.path.exists(record_filename):
         wb = openpyxl.Workbook()
@@ -215,8 +216,9 @@ def write_to_excel(record_filename, algorithm_parameters, weights, degrees,
     head = algorithm_parameters
     df = df._append(head)
     # 增加数据
-    data = pd.DataFrame([compare_weights, weights, compare_degrees, degrees, runtime_one_node],
-                        index=['FPB_w', 'sa_w' + str(initial_temperature), 'FPB_d', 'sa_d', 'runtime'])
+    data = pd.DataFrame([compare_weights, weights, compare_degrees, degrees, runtime_one_node, relative_error],
+                        index=['FPB_w', 'sa_w' + str(initial_temperature), 'FPB_d', 'sa_d', 'runtime',
+                               'relative_error'])
     df = df._append(data, ignore_index=False)
     # 写入
     df.to_excel(record_filename, sheet_name="Sheet2", index=True, engine="openpyxl")
@@ -265,9 +267,9 @@ G = nx.Graph()
 # filename = "bitcoin.csv"
 # record_filename = "bitcoin.xlsx"
 
-filename = "bitcoin.csv"
-record_filename = "./result2/bitcoin_500.xls"
-Glist = fileHandle.csvResolve("../dataset/" + filename)
+filename = "wiki-vote.csv"
+
+Glist = fileHandle.csvResolve("../../dataset/" + filename)
 G.add_weighted_edges_from(Glist)
 
 # 写入文件参数
@@ -275,50 +277,59 @@ G.add_weighted_edges_from(Glist)
 # facebook
 # query_nodes = [715, 751, 430, 436, 1026, 1339, 2203, 2336, 2244, 0]
 # wiki-vote
-# query_nodes = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
+query_nodes = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
 # bitcoin
-query_nodes = [3, 4553, 4683, 1860, 3598, 3744, 2942, 546, 1018, 905]
+# query_nodes = [3, 4553, 4683, 1860, 3598, 3744, 2942, 546, 1018, 905]
 
 # 温度为[100,300,600,1000,1500,2000,3000]
 
 # temperatures = [100, 300, 600, 1000, 1500, 2000, 3000]
-temperatures = [100, 200, 300, 400, 500]
+temperatures = [100, 300, 500, 700, 1000]
+iterations_list = [10, 30, 50, 70, 100, 150, 200]
 for i in range(len(temperatures)):
-    # 设置退火算法参数
-    initial_temperature = temperatures[i]
-    print("当前温度", initial_temperature)
-    min_temperature = 1
-    cooling_rate = 0.95
-    iterations = 100
-    cool_type = "非线性"
-    size = 7
-    # 初始化类
-    print("原始节点数：", len(G.nodes()))
-    fun = function.Function(G, -1)
-    # G = pre_byDistance(G, i, size)
-    print("修剪后节点数：", len(G.nodes()))
+    for times in iterations_list:
+        # 设置退火算法参数
+        initial_temperature = temperatures[i]
+        print("当前温度", initial_temperature)
+        min_temperature = 1
+        cooling_rate = 0.95
+        iterations = times
+        cool_type = "非线性"
+        size = 7
+        # 初始化类
+        print("原始节点数：", len(G.nodes()))
+        fun = function.Function(G, -1)
+        # G = pre_byDistance(G, i, size)
+        print("修剪后节点数：", len(G.nodes()))
+        start_time = time.time()
+        weights, degrees, runtime_node = run(query_nodes)
+        end_time = time.time()
+        runtime = end_time - start_time
+        # 算法参数
+        algorithm_parameter = pd.DataFrame(
+            [['initial_temperature', 'min_temperature', 'cooling_rate', 'iterations', 'size', 'filename', 'cool-type',
+              'runtime'],
+             [initial_temperature, min_temperature, cooling_rate, iterations, size, filename, cool_type, runtime]],
+            index=['parameter', 'value'])
+        # 增加单个节点的计算时间
 
-    start_time = time.time()
-    weights, degrees, runtime_node = run(query_nodes)
-    end_time = time.time()
-    runtime = end_time - start_time
-    # 算法参数
-    algorithm_parameter = pd.DataFrame(
-        [['initial_temperature', 'min_temperature', 'cooling_rate', 'iterations', 'size', 'filename', 'cool-type',
-          'runtime'],
-         [initial_temperature, min_temperature, cooling_rate, iterations, size, filename, cool_type, runtime]],
-        index=['parameter', 'value'])
-    # 增加单个节点的计算时间
+        # 精确解（facebook）
+        # compare_weights = [1.233, 1.211, 2.118, 2.91, 2.27, 3.154, 3.386, 4.215, 5.299, 1.236]
+        # compare_degrees = [4, 4, 6, 6, 6, 6, 6, 6, 6, 6]
+        # # 精确解（wiki-vote）
+        compare_weights = [0.083, 0.377, 0.497, 0.71, 1.069, 1.162, 0.869, 1.13, 1.214, 1.527]
+        compare_degrees = [3, 4, 5, 5, 6, 6, 5, 6, 6, 6]
+        # 精确解（bitcoin）
+        # compare_weights = [0.365, 0.662, 3.774, 0.588, 0.659, 0.96, 0.844, 0.618, 0.72, 0.84]
+        # compare_degrees = [4, 6, 6, 6, 5, 6, 6, 5, 6, 6]
+        # 计算误差
+        relative_error = []
+        for j in range(len(compare_weights)):
+            error = (compare_weights[j] - weights[j]) / compare_weights[j]
+            if error < 0:
+                error = 0
+            relative_error.append(round(error, 4))
 
-    # 精确解（facebook）
-    # compare_weights = [1.233, 1.211, 2.118, 2.91, 2.27, 3.154, 3.386, 4.215, 5.299, 1.236]
-    # compare_degrees = [4, 4, 6, 6, 6, 6, 6, 6, 6, 6]
-    # # 精确解（wiki-vote）
-    # compare_weights = [0.083, 0.377, 0.497, 0.71, 1.069, 1.162, 0.869, 1.13, 1.214, 1.527]
-    # compare_degrees = [3, 4, 5, 5, 6, 6, 5, 6, 6, 6]
-    # 精确解（bitcoin）
-    compare_weights = [0.365, 0.662, 3.774, 0.588, 0.659, 0.96, 0.844, 0.618, 0.72, 0.84]
-    compare_degrees = [4, 6, 6, 6, 5, 6, 6, 5, 6, 6]
-    write_to_excel(record_filename, algorithm_parameter, weights, degrees, compare_weights, compare_degrees,
-                   initial_temperature, runtime_node)
-
+        record_filename = "../result3/" + filename + "_" + str(size) + "_" + str(temperatures[i])+ ".xls"
+        write_to_excel(record_filename, algorithm_parameter, weights, degrees, compare_weights, compare_degrees,
+                       initial_temperature, runtime_node, relative_error)

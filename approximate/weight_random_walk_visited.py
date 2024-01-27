@@ -4,6 +4,7 @@ from core import fileHandle
 from core import function
 
 """
+目前暂时采用该种方式
 根据邻居边权重进行加权概率随机游走，通过累加节点的访问次数来计算节点的得分
 两种方式
 1：完全根据两个节点之间的权重作为概率（会出现查询节点只有一度的情形）
@@ -127,7 +128,7 @@ for i in range(len(nodes)):
     for t in range(1):
         graph = weighted_random_walk(G, query_node, size * 2, times)
         result = get_result(graph, query_node, size)
-        print(result)
+        # print(result)
         if fun.get_min_weight(result) >= min_weight:
             min_weight = fun.get_min_weight(result)
             final_result = result
