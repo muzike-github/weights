@@ -4,14 +4,89 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04e658e7-f9b5-4e7b-9c83-41eb44eb534c" name="Default Changelist" comment="对比实验、算法温度和迭代次数测试">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/approximate/copy_for_test/simulated_annealing_bit.py" beforeDir="false" afterPath="$PROJECT_DIR$/approximate/copy_for_test/simulated_annealing_bit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/approximate/copy_for_test/simulated_annealing_face.py" beforeDir="false" afterPath="$PROJECT_DIR$/approximate/copy_for_test/simulated_annealing_face.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/approximate/copy_for_test/simulated_annealing_wiki.py" beforeDir="false" afterPath="$PROJECT_DIR$/approximate/copy_for_test/simulated_annealing_wiki.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/approximate/result3/facebook.csv_7_100.xls" beforeDir="false" afterPath="$PROJECT_DIR$/approximate/result3/facebook.csv_7_100.xls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/approximate/result3/facebook.csv_7_300.xls" beforeDir="false" afterPath="$PROJECT_DIR$/approximate/result3/facebook.csv_7_300.xls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/approximate/result3/facebook.csv_7_500.xls" beforeDir="false" afterPath="$PROJECT_DIR$/approximate/result3/facebook.csv_7_500.xls" afterDir="false" />
+    <list default="true" id="04e658e7-f9b5-4e7b-9c83-41eb44eb534c" name="Default Changelist" comment="1月31号离校前提交">
+      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/pagerank.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/Brightkite_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/bitcoin_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/bitcoin_1000.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/bitcoin_1000_2.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/bitcoin_1000_97.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/bitcoin_modify.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/bitcoin_modify_500.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/bitcoin_test.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/bitcoin_test2.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/dblp_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/facebook.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/facebook_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/facebook_1000.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/facebook_test2.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/wiki-vote.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/wiki-vote_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/wiki-vote_1000.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result/wiki-vote_test2.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_100_10.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_100_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_100_30.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_100_50.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_100_70.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_300_10.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_300_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_300_30.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_300_50.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_300_70.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_500_10.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_500_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_500_30.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_500_50.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin.csv_7_500_70.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin_30.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin_50.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/bitcoin_500.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/facebook.csv_7_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/facebook.csv_7_300.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/facebook.csv_7_500.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/facebook_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/facebook_30.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/facebook_50.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/facebook_500.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_100_10.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_100_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_100_30.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_100_50.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_100_70.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_300_10.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_300_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_300_30.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_300_50.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_300_70.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_500_10.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_500_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_500_30.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_500_50.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote.csv_7_500_70.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote_30.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote_50.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result2/wiki-vote_500.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/bitcoin.csv_7_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/bitcoin.csv_7_1000.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/bitcoin.csv_7_300.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/bitcoin.csv_7_500.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/bitcoin.csv_7_700.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/facebook.csv_7_1000.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/facebook.csv_7_700.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/wiki-vote.csv_7_100.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/wiki-vote.csv_7_1000.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/wiki-vote.csv_7_300.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/wiki-vote.csv_7_500.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/approximate/result3/wiki-vote.csv_7_700.xls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/Brightkite.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/HR_edges_ja.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/dblp.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/result/result_log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weightOnly.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,6 +317,7 @@
       <workItem from="1704798063373" duration="4625000" />
       <workItem from="1705128451045" duration="53207000" />
       <workItem from="1706320265284" duration="2086000" />
+      <workItem from="1706696139177" duration="335000" />
     </task>
     <task id="LOCAL-00001" summary="使用排序1.0，小优化">
       <created>1678089624401</created>
@@ -292,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706320387019</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="1月31号离校前提交">
+      <created>1706696196187</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1706696196187</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +399,8 @@
     <MESSAGE value="新增模拟退火和随机游走算法" />
     <MESSAGE value="修改模拟退火算法的扰动策略，效果较好" />
     <MESSAGE value="对比实验、算法温度和迭代次数测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="对比实验、算法温度和迭代次数测试" />
+    <MESSAGE value="1月31号离校前提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="1月31号离校前提交" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

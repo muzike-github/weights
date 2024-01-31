@@ -1,0 +1,78 @@
+=======2023-11-23_133032========
+dataset:dataset/facebook.csv
+nodes:211	 edges:1997	 queryNode:715
+min_influential:1.233
+time_consume:2.118540048599243
+min_degree:4
+=======2023-11-23_133839========
+dataset:dataset/facebook.csv
+nodes:211	 edges:1997	 queryNode:751
+min_influential:1.211
+time_consume:4.288028955459595
+min_degree:4
+=======2023-12-03_152658========
+dataset:dataset/wiki-vote.csv
+nodes:3879	 edges:93440	 queryNode:133
+min_influential:0.083
+time_consume:199.64441514015198
+min_degree:3
+=======2023-12-05_152735========
+dataset:dataset/bitcoinJa.csv
+nodes:5515	 edges:21070	 queryNode:3744
+min_influential:0.9600000000000001
+time_consume:89.3570146560669
+min_degree:6
+=======2023-12-05_153048========
+dataset:dataset/bitcoinJa.csv
+nodes:5515	 edges:21070	 queryNode:3744
+min_influential:0.9600000000000001
+time_consume:88.5990002155304
+min_degree:6
+=======2023-12-05_153233========
+dataset:dataset/bitcoinJa.csv
+nodes:399	 edges:2000	 queryNode:170
+min_influential:0.0
+time_consume:0.19248557090759277
+min_degree:1
+=======2023-12-05_153352========
+dataset:dataset/bitcoinJa.csv
+nodes:5594	 edges:21150	 queryNode:546
+min_influential:0.618
+time_consume:16.55375099182129
+min_degree:5
+=======2023-12-05_154034========
+dataset:dataset/bitcoinJa.csv
+nodes:5166	 edges:20519	 queryNode:4553
+min_influential:0.662
+time_consume:260.0154628753662
+min_degree:6
+=======2023-12-05_154236========
+dataset:dataset/bitcoinJa.csv
+nodes:4581	 edges:19277	 queryNode:4266
+min_influential:0.221
+time_consume:417.94528222084045
+min_degree:4
+=======2023-12-07_124003========
+dataset:dataset/wiki-vote.csv
+nodes:6430	 edges:99901	 queryNode:6596
+min_influential:1.1300000000000001
+time_consume:49.85308647155762
+min_degree:6
+=======2023-12-07_124958========
+dataset:dataset/wiki-vote.csv
+nodes:6907	 edges:100566	 queryNode:3073
+min_influential:0.71
+time_consume:673.6579098701477
+min_degree:5
+=======2023-12-07_130022========
+dataset:dataset/wiki-vote.csv
+nodes:2355	 edges:73211	 queryNode:6430
+min_influential:0.0
+time_consume:1.6266767978668213
+min_degree:1
+=======2024-01-10_013440========
+dataset:dataset/Brightkite.csv
+nodes:13527	 edges:93309	 queryNode:22
+min_influential:0.236
+time_consume:23152.62883234024
+min_degree:1
