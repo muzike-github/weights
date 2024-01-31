@@ -284,7 +284,8 @@ query_nodes = [3, 4553, 4683, 1860, 3598, 3744, 2942, 546, 1018, 905]
 
 # temperatures = [100, 300, 600, 1000, 1500, 2000, 3000]
 temperatures = [100, 300, 500, 700, 1000]
-iterations_list = [10, 30, 50, 70, 100, 150, 200]
+# iterations_list = [10, 30, 50, 70, 100, 150, 200]
+iterations_list = [300, 400, 500]
 for i in range(len(temperatures)):
     for times in iterations_list:
         # 设置退火算法参数
