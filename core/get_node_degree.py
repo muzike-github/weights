@@ -16,11 +16,12 @@ def get_nodes_degree(filename):
     dic = {}
     for i in G.nodes:
         dic[i] = nx.degree(G, i)
+
     sort_list = sorted(dic.items(), key=lambda x: x[1], reverse=True)
     return sort_list
 
 
-filename = "../dataset/facebook.csv"
+filename = "../dataset/emailWeightJa.csv"
 node_dic = get_nodes_degree(filename)
 print(node_dic)
 print(len(node_dic))

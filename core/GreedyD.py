@@ -7,7 +7,7 @@ import function as fc
 
 '''
 Greedy算法
-每一步删除当前图中度数最小的节点，
+每一步删除当前图中度数最小的节点，当结点数满足大小限制时返回社区
 直到该节点属于查询节点集或查询节点集合不再连通
 '''
 
@@ -30,42 +30,51 @@ def pre_byDistance(G, Q, h):
     return G
 
 
-def Greedy(Gx, Q, h):
-    nbs = list(nx.neighbors(Gx,Q))
-    print(nbs)
-    Gx = pre_byDistance(Gx, Q, h)
-    nodes = list(Gx.nodes)  # 获取图的所有节点
-    while True:
-        if not nx.is_connected(Gx):
-            # 获取包含查询节点的连通分量，
-            nodes_new = nx.node_connected_component(Gx, Q)
-            print(len(nodes_new))
-            freeze_graph = nx.subgraph(Gx, nodes_new)
-            # 生成新的图（此时图属于冻结图，需要解冻后才可以进行修改）
-            Gx = nx.Graph(freeze_graph)
-            nodes = list(Gx.nodes)  # 更新节点集合nodes
-            if Gx is None:
-                print("error")
-                return None
-        if len(Gx.nodes) <= h:
-            result = nodes[:]
-            return result
-        # 遍历所有节点，找出度数最小的
-        else:
-            v = nodes[len(nodes)-1]
-            if v == Q:
-                v = nodes[len(nodes)-2]
-            for i in range(1, len(nodes)):
-                if nodes[i] == Q:
-                    continue
-                if Gx.degree(nodes[i]) < Gx.degree(v):
-                    v = nodes[i]
-            if Gx.degree(v)>=2:
+# 找到包含查询结点的连通分量
+def find_connected_component(graph, query_node):
+    connected_components = nx.connected_components(graph)  # 这里假设是无向图
+    for component in connected_components:
+        if query_node in component:
+            return component
+    return None
 
-                print("query node's degree:",Gx.degree(Q))
-                print("delete node's degree:",Gx.degree(v))
-            nodes.remove(v)
-            Gx.remove_node(v)
+
+def Greedy(Gx, q, h):
+    # graph = pre_byDistance(Gx, q, h)
+    graph = Gx
+    nodes = list(nx.nodes(graph))  # 获取图的所有节点
+    nodes.remove(q)
+    #print(nodes)
+    print("开始根据距离迭代删除")
+    for node in nodes[:]:
+        if not nx.has_path(graph, node, q):
+            graph.remove_node(node)
+            nodes.remove(node)
+        elif nx.shortest_path_length(graph, node, q) > 2:
+            # print(node,"与结点距离:",nx.shortest_path_length(graph, node, q))
+            graph.remove_node(node)
+            nodes.remove(node)
+            # print("是否还在列表",2625 in nodes)
+    print("删除后节点数",len(nodes))
+    if 2625 in nodes:
+        print("true")
+    print("开始根据度数迭代删除")
+    # 根据社区大小来进行迭代删除
+    while len(nodes) >= h:
+        min_degree_node = nodes[0]
+        min_degree = nx.degree(graph, min_degree_node)
+        # 计算度数最小的结点
+        for node in nodes:
+            temp_degree = nx.degree(graph, node)
+            if temp_degree < min_degree:
+                min_degree = temp_degree
+                min_degree_node = node
+        # 删除度数最小的结点
+        graph.remove_node(min_degree_node)
+        nodes.remove(min_degree_node)
+        # 判断
+
+    return graph.nodes()
 
 
 def paint_by_graph(G):
@@ -83,16 +92,25 @@ def paint_by_graph(G):
 
 filename = "../dataset/wiki-vote.csv"
 Glist = fh.csvResolve(filename)
-G = nx.Graph()
-G.add_weighted_edges_from(Glist)
-# paint_by_graph(G)
-start_time = time.time()
-Q = 133
-result = Greedy(G, Q, 7)
-end_time = time.time()
-print(result)
-print("runtime:", end_time - start_time)
-fun = fc.Function(G, Q)
-min_weight = fun.get_min_weight(result)
-print("min_weight", min_weight)
-paint_by_graph(nx.subgraph(G, result))
+
+# nodelist = [715, 751, 430, 436, 1026, 1339, 2203, 2336, 2244, 0]
+nodelist = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
+
+for querynode in nodelist:
+    G = nx.Graph()
+    G.add_weighted_edges_from(Glist)
+    print(querynode)
+    # paint_by_graph(G)
+    start_time = time.time()
+    # q = 1339
+    result = Greedy(G, querynode, 4)
+    end_time = time.time()
+    print(result)
+    print("runtime:", end_time - start_time)
+    fun = fc.Function(G, querynode)
+    min_weight = fun.get_min_weight(result)
+    min_degree = fun.minDegree(nx.subgraph(G,result))
+    print("min_weight", min_weight)
+    print("min_degree", min_degree)
+
+    # paint_by_graph(nx.subgraph(G, result))

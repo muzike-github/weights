@@ -4,7 +4,7 @@ import core.function as fun
 import core.fileHandle as fh
 import matplotlib.pyplot as plt
 import igraph as ig
-
+# 两个case study 的示例图
 Glist = fh.csvResolve('dataset/facebook.csv')
 G = nx.Graph()
 G.add_weighted_edges_from(Glist)
@@ -31,7 +31,7 @@ def paint_case1_BRB(H):
     # 画节点图
     for node_color, nodelist in nodelist.items():
         nx.draw_networkx_nodes(g2, pos, nodelist=nodelist,
-                               node_size=400,
+                               node_size=600,
                                node_color=node_color, label=True)
 
     # 画边
@@ -40,7 +40,8 @@ def paint_case1_BRB(H):
     # # # 画边权重
     nx.draw_networkx_edge_labels(g1, pos, edge_labels=weights)
     nx.draw_networkx_labels(g1, pos, font_color='black')
-    plt.savefig("case1_BRB.pdf", dpi=600, bbox_inches='tight')
+    plt.box(False)
+    #plt.savefig("case1_BRB.svg", dpi=600, bbox_inches='tight')
     plt.show()
 
 
@@ -73,7 +74,8 @@ def paint_case1_FPB(H):
     # 画边权重
     nx.draw_networkx_edge_labels(g1, pos, edge_labels=weights)
     nx.draw_networkx_labels(g1, pos, font_color='black')
-    plt.savefig("case1_FPB.pdf", dpi=600, bbox_inches='tight')
+    plt.box(False)
+    # plt.savefig("case1_FPB.svg", dpi=600, bbox_inches='tight')
     plt.show()
 
 

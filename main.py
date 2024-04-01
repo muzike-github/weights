@@ -13,14 +13,22 @@ node_list = [(0, 1, 7), (0, 2, 4), (0, 3, 2), (0, 4, 6), (0, 5, 9),
 
 
 # 根据距离对R进行预处理
-def pre_byDistance(G):
+def pre_byDistance(G, query_node):
+    # 如果图有多个连通分量，则筛选只包含查询结点的那个
+    print("删减前：", len(G.nodes))
+    components = [c for c in nx.connected_components(G) if query_node in c]
+    nodes = list(components[0])
+    filter_graph = nx.Graph(nx.subgraph(G, nodes))
+    print("删减后", len(filter_graph.nodes))
+    print("删减后连通分量", len(list(nx.connected_components(filter_graph))))
+    # 根据距离进一步筛选
     delete_list = []
-    for v in G.nodes:
-        if not nx.has_path(G, v, q) or nx.shortest_path_length(G, v, q) > int(size / 2):
+    for v in filter_graph.nodes:
+        if not nx.has_path(G, v, query_node) or nx.shortest_path_length(G, v, query_node) > int(size / 2):
             delete_list.append(v)
     for i in delete_list:
-        G.remove_node(i)
-    return G
+        filter_graph.remove_node(i)
+    return filter_graph
 
 
 # 递归函数,weight是当前以求得的最优社区的最小权重
@@ -115,33 +123,43 @@ dblp:247
 dblp:354
 lastfm:81
 '''
+# email结点
+# nodes=[176,256,238,25,135,7]
+# wiki
+# nodes = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
+# facebook
+nodes = [715,751,430,436,1026,1339,2203,2336,2244,0]
 if __name__ == '__main__':
-    q = eval(input("查询节点:"))  # 查询节点和社区大小
-    size = 7
-    H = []
-    weight_min = 0
-    filename = "dataset/Brightkite.csv"
-    Glist = fh.csvResolve(filename)
-    # Glist = node_list
-    G = nx.Graph()
-    G.add_weighted_edges_from(Glist)
-    print(len(G.nodes))
-    print(len(G.edges))
-    # 预处理
-    G = pre_byDistance(G)
-    start_time = time.time()
-    fun = fc.Function(G, q)
-    print("数据的节点数量", len(G.nodes))
-    print("数据的边数量", len(G.edges))
+    for node in nodes:
+        # q = eval(input("查询节点:"))  # 查询节点和社区大小
+        size = 4
+        query_node = node
+        H = []
+        weight_min = 0
+        filename = "dataset/facebook.csv"
+        Glist = fh.csvResolve(filename)
+        # Glist = node_list
+        G = nx.Graph()
+        G.add_weighted_edges_from(Glist)
+        # 预处理
+        # G = pre_byDistance(G, query_node)
+        # print("connect",len(list(nx.connected_components(G))))
 
-    result = WBS(G, q, size)
-    end_time = time.time()
-    # 最小影响力
-    min_influential = fun.get_min_weight(H)
-    # 最小度
-    min_degree = fun.minDegree(nx.subgraph(G, H))
-    print("耗时", end_time - start_time)
-    print("社区的最小权重", min_influential,
-          "最小度", min_degree)
-    save.save_txt(filename, len(G.nodes), len(G.edges), q, min_influential, end_time - start_time, min_degree)
-    fc.paint(Glist, result, "weightOnly")
+        start_time = time.time()
+        fun = fc.Function(G, query_node)
+        print("数据的节点数量", len(G.nodes))
+        print("数据的边数量", len(G.edges))
+
+        result = WBS(G, query_node, size)
+        end_time = time.time()
+        # 最小影响力
+        min_influential = fun.get_min_weight(H)
+        # 最小度
+        min_degree = fun.minDegree(nx.subgraph(G, H))
+        print("社区大小", size)
+        print("耗时", end_time - start_time)
+        print("社区的最小权重", min_influential,
+              "最小度", min_degree)
+        save.save_txt(filename, len(G.nodes), len(G.edges), query_node, min_influential, end_time - start_time,
+                      min_degree)
+        # fc.paint(Glist, result, "weightOnly")

@@ -14,8 +14,8 @@ def txt_trans_csv(filename, output_filename):
     t = 0
     while line:
         line = line.strip('\n')  # 处理换行
-        node = line.split('\t')  # 数据之间以换行隔开
-        # node = line.split(' ')  # 数据之间以空格隔开
+        # node = line.split('\t')  # 数据之间以换行隔开
+        node = line.split(' ')  # 数据之间以空格隔开
         nodeturple = tuple(node)
         Glist.append(nodeturple)
         line = f.readline()
@@ -119,4 +119,4 @@ def csv_trans(filename, output_filename):
 # csv_trans("dataset/bitcoin2.csv", "bitcoin.csv")
 # csv_trans("dataset/emailWeight.csv", "emailWeightJa.csv")
 # csv_trans("dataset/HR_edges.csv", "HR_edges_ja.csv")
-txt_trans_csv("dataset/Brightkite_edges.txt", "Brightkite.csv")
+txt_trans_csv("dataset/email-Eu-core.txt", "email.csv")

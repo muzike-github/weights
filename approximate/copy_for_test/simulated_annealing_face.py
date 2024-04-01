@@ -284,9 +284,9 @@ query_nodes = [715, 751, 430, 436, 1026, 1339, 2203, 2336, 2244, 0]
 # 温度为[100,300,600,1000,1500,2000,3000]
 
 # temperatures = [100, 300, 600, 1000, 1500, 2000, 3000]
-temperatures = [100, 300, 500, 700, 1000]
+temperatures = [1000]
 # iterations_list = [10, 30, 50, 70, 100, 150, 200]
-iterations_list = [300, 400, 500]
+iterations_list = [200]
 for i in range(len(temperatures)):
     for times in iterations_list:
         # 设置退火算法参数
@@ -296,7 +296,7 @@ for i in range(len(temperatures)):
         cooling_rate = 0.95
         iterations = times
         cool_type = "非线性"
-        size = 7
+        size = 4
         # 初始化类
         print("原始节点数：", len(G.nodes()))
         fun = function.Function(G, -1)

@@ -91,7 +91,12 @@ class Function:
             # 此处判断v是否在C∪{v}中是否有邻居，没有邻居，分数为0
             if len(list(nx.neighbors(graphCAndV, v))) != 0:
                 # 有邻居但邻居在C中度为0，则设置score为0
+                # print("连通分量",len(list(nx.connected_components(graphCAndV))))
+
                 for i in nx.neighbors(graphCAndV, v):  # 得到v(v∈R)在C∪{v}所有的邻居节点
+                    # print(v)
+                    # print(list(nx.neighbors(graphCAndV, v)))
+                    # print(i)
                     if graphC.degree(i) != 0:
                         score += (1 / graphC.degree(i))
                         score = round(score, 2)

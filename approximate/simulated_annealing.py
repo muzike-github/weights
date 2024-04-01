@@ -69,7 +69,7 @@ def initial_solution(graph, query_node, size):
         score_dict = get_weight_score(graph, partial_solution, candidate)
         next_node = max(score_dict, key=score_dict.get)
         partial_solution.append(next_node)
-    print("初始解：", partial_solution)
+    # print("初始解：", partial_solution)
     return partial_solution
 
 
@@ -172,7 +172,7 @@ def simulated_annealing(graph, query_node, size, initial_temperature, min_temper
                 if current_weight > best_weight:
                     best_solution = current_solution.copy()
                     best_weight = current_weight
-                    print("更新社区，影响力为：", best_weight)
+                    # print("更新社区，影响力为：", best_weight)
             # 否则，根据概率选择是否接受新解
             else:
                 # print("接受概率：", math.exp(dE / temperature), "random:", random.random())
@@ -248,6 +248,48 @@ def run(query_nodes):
     return weights, degrees, runtime_node
 
 
+def run_temperature(query_nodes):
+    '''
+    计算平均影响力和度数
+    :param query_nodes:
+    :return:
+    '''
+    length = len(query_nodes)
+    weights = []
+    degrees = []
+    # 记录关键值
+    total_inf = 0
+    total_deg = 0
+    total_runtime = 0
+    runtime_node = []
+    for i in range(len(query_nodes)):
+        # query_node = int(input("查询节点:"))
+        query_node = query_nodes[i]
+        print("开始结点" , query_node, "社区搜索")
+        # 结点预处理
+        # global G
+        # G = pre_byDistance(G, query_node,size)
+        # print("查询节点：", query_node, "度数为：", nx.degree(G, query_node))
+        if query_node == -1:
+            break
+        start_time = time.time()
+        best_community, best_weight = simulated_annealing(G, query_node, size, initial_temperature, min_temperature,
+                                                          cooling_rate, iterations)
+        best_degree = fun.minDegree(nx.subgraph(G, best_community))
+        end_time = time.time()
+        total_inf = total_inf + best_weight
+        # print(total_inf)
+        total_deg = total_deg + best_degree
+        print("Best Community:", best_community, "w:", best_weight, "d:", best_degree)
+        print("耗时：", end_time - start_time)
+        weights.append(best_weight)
+        degrees.append(best_degree)
+        runtime_node.append(round(end_time - start_time, 0))
+        # paint
+        # function.paint(Glist, best_community, str(runtime_node[i]))
+    return total_inf / length, total_deg / length
+
+
 # 数据预处理，移除距离大于size-1的节点
 def pre_byDistance(G, q, size):
     delete_list = []
@@ -265,10 +307,11 @@ G = nx.Graph()
 # filename = "bitcoin.csv"
 # record_filename = "bitcoin.xlsx"
 
-filename = "bitcoin.csv"
+filename = "amazon.csv"
 record_filename = "./result2/bitcoin_500.xls"
 Glist = fileHandle.csvResolve("../dataset/" + filename)
 G.add_weighted_edges_from(Glist)
+# 对图做预处理，删减结点
 
 # 写入文件参数
 
@@ -277,37 +320,51 @@ G.add_weighted_edges_from(Glist)
 # wiki-vote
 # query_nodes = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
 # bitcoin
-query_nodes = [3, 4553, 4683, 1860, 3598, 3744, 2942, 546, 1018, 905]
+# query_nodes = [3, 4553, 4683, 1860, 3598, 3744, 2942, 546, 1018, 905]
 
 # 温度为[100,300,600,1000,1500,2000,3000]
-
+#dblp
+query_nodes = [19414,
+12644,
+45905,
+4951,
+7308,
+]
+# dblp 142:10 276:10
 # temperatures = [100, 300, 600, 1000, 1500, 2000, 3000]
-temperatures = [100, 200, 300, 400, 500]
+temperatures = [1000]
 for i in range(len(temperatures)):
+    length = len(query_nodes)
     # 设置退火算法参数
     initial_temperature = temperatures[i]
     print("当前温度", initial_temperature)
+
     min_temperature = 1
     cooling_rate = 0.95
-    iterations = 100
+    iterations = 200
     cool_type = "非线性"
-    size = 7
+    size = 4
+    print("社区大小", size)
     # 初始化类
-    print("原始节点数：", len(G.nodes()))
+    # print("原始节点数：", len(G.nodes()))
     fun = function.Function(G, -1)
     # G = pre_byDistance(G, i, size)
-    print("修剪后节点数：", len(G.nodes()))
+    # print("修剪后节点数：", len(G.nodes()))
 
     start_time = time.time()
-    weights, degrees, runtime_node = run(query_nodes)
+
+    # weights, degrees, runtime_node = run(query_nodes)
+    avg_inf, avg_deg = run_temperature(query_nodes)
     end_time = time.time()
     runtime = end_time - start_time
+    print("温度：", temperatures[i])
+    print("影响力：", round(avg_inf, 4), "度数", avg_deg, "runtime", runtime / length)
     # 算法参数
-    algorithm_parameter = pd.DataFrame(
-        [['initial_temperature', 'min_temperature', 'cooling_rate', 'iterations', 'size', 'filename', 'cool-type',
-          'runtime'],
-         [initial_temperature, min_temperature, cooling_rate, iterations, size, filename, cool_type, runtime]],
-        index=['parameter', 'value'])
+    # algorithm_parameter = pd.DataFrame(
+    #     [['initial_temperature', 'min_temperature', 'cooling_rate', 'iterations', 'size', 'filename', 'cool-type',
+    #       'runtime'],
+    #      [initial_temperature, min_temperature, cooling_rate, iterations, size, filename, cool_type, runtime]],
+    #     index=['parameter', 'value'])
     # 增加单个节点的计算时间
 
     # 精确解（facebook）
@@ -319,6 +376,5 @@ for i in range(len(temperatures)):
     # 精确解（bitcoin）
     compare_weights = [0.365, 0.662, 3.774, 0.588, 0.659, 0.96, 0.844, 0.618, 0.72, 0.84]
     compare_degrees = [4, 6, 6, 6, 5, 6, 6, 5, 6, 6]
-    write_to_excel(record_filename, algorithm_parameter, weights, degrees, compare_weights, compare_degrees,
-                   initial_temperature, runtime_node)
-
+    # write_to_excel(record_filename, algorithm_parameter, weights, degrees, compare_weights, compare_degrees,
+    #                initial_temperature, runtime_node)runtime_node

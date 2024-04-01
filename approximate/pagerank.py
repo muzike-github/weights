@@ -1,6 +1,7 @@
 import networkx as nx
 import core.fileHandle as fh
 import core.function as fc
+import time
 
 
 def get_next_node(P, C):
@@ -45,7 +46,6 @@ def get_second_node(q):
     return second_node
 
 
-
 def run_pagerank(size):
     for i in range(len(query_nodes)):
         query_node = query_nodes[i]
@@ -82,7 +82,7 @@ query_nodes = [715, 751, 430, 436, 1026, 1339, 2203, 2336, 2244, 0]
 # query_nodes = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
 # bitcoin
 # query_nodes = [3, 4553, 4683, 1860, 3598, 3744, 2942, 546, 1018, 905]
-
-run_pagerank(7 - 1)
-
-
+start_time = time.time()
+end_time = time.time()
+run_pagerank(4 - 1)
+print("算法运行时间:", round(end_time - start_time, 2))

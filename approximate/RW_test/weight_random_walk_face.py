@@ -101,7 +101,7 @@ def get_result(G, start_node, size):
 
 
 # 示例
-Glist = fileHandle.csvResolve("../dataset/facebook.csv")
+Glist = fileHandle.csvResolve("../../dataset/facebook.csv")
 # Glist = [(1, 2, 1), (1, 4, 4), (1, 5, 2), (1, 6, 1), (2, 3, 2),
 #          (2, 4, 5), (2, 6, 2), (3, 4, 3), (3, 5, 3), (4, 5, 3), (5, 6, 4)]
 G = nx.Graph()
@@ -111,54 +111,39 @@ nodes_weights = []
 for i in list(G.nodes):
     nodes_weights.append((i, {'node_weight': 0}))
 G.add_nodes_from(nodes_weights)
-size = 6  # 社区大小
-walk_length = size * 1
+size = 4-1  # 社区大小
+walk_length = size * 3
 # start_node = 1
-times = 1000  # 随机游走次数
+times = 5000  # 随机游走次数
 # facebook
 nodes = [715, 751, 430, 436, 1026, 1339, 2203, 2336, 0]
 # wiki-vote
 # nodes = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
 # bitcoin
 # nodes = [3, 4553, 4683, 1860, 3598, 3744, 2942, 546, 1018, 905]
-inf = 0
-total_time = 0
-total_degree = 0
-iterations = [500, 1000, 2000, 5000, 10000]
 
 length = len(nodes)
-for iteration in iterations:
-    inf = 0
-    total_time = 0
-    total_degree = 0
-    for i in range(len(nodes)):
-        query_node = nodes[i]
-        # 对每个节点进行10次重复，取最优
-        min_weight = 0
-        final_result = []
-        fun = function.Function(G, query_node)
-        # print("查询节点:", query_node)
-        start_time = time.time()
-        # for t in range(5):
-        #     graph = weighted_random_walk(G, query_node, size * 2, times)
-        #     result = get_result(graph, query_node, size)
-        #     print("result",result)
-        #     # print(result)
-        #     if fun.get_min_weight(result) >= min_weight:
-        #         min_weight = fun.get_min_weight(result)
-        #         final_result = result
-        graph = weighted_random_walk(G, query_node, size * 4, iteration)
-        end_time = time.time()
-        final_result = get_result(graph, query_node, size)
-        # print("result:", final_result,
-        #       "最小影响力：", fun.get_min_weight(final_result)
-        #       , "最小度：", fun.minDegree(nx.subgraph(G, final_result)),
-        #       "runtime:", round(end_time - start_time))
-        inf = inf + fun.get_min_weight(final_result)
-        total_time = total_time + round(end_time - start_time)
-        total_degree = total_degree + fun.minDegree(nx.subgraph(G, final_result))
-        # function.paint(Glist, final_result, str(nodes[i]))
-    print("步长：", walk_length, "游走次数", iteration)
-    print("平均影响力值：", inf / length)
-    print("平均耗时", total_time / length)
-    print("平均度数：", total_degree / length)
+for i in range(len(nodes)):
+    query_node = nodes[i]
+    # 对每个节点进行10次重复，取最优
+    min_weight = 0
+    final_result = []
+    fun = function.Function(G, query_node)
+    print("查询节点:", query_node)
+    start_time = time.time()
+    # for t in range(5):
+    #     graph = weighted_random_walk(G, query_node, size * 2, times)
+    #     result = get_result(graph, query_node, size)
+    #     print("result",result)
+    #     # print(result)
+    #     if fun.get_min_weight(result) >= min_weight:
+    #         min_weight = fun.get_min_weight(result)
+    #         final_result = result
+    graph = weighted_random_walk(G, query_node, size * 4, times)
+    end_time = time.time()
+    final_result = get_result(graph, query_node, size)
+    print("result:", final_result,
+          "最小影响力：", fun.get_min_weight(final_result)
+          , "最小度：", fun.minDegree(nx.subgraph(G, final_result)),
+          "runtime:", round(end_time - start_time))
+    # function.paint(Glist, final_result, str(nodes[i]))

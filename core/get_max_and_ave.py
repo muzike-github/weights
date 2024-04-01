@@ -6,6 +6,8 @@ def get_max_and_ave(filename):
     nodes = fh.csvResolve(filename)
     G = nx.Graph()
     G.add_weighted_edges_from(nodes)
+    print("nodes:", len(G.nodes))
+    print("edges:", len(G.edges))
     degree_list = []
     sum_degree = 0
     for i in G.nodes:
@@ -16,4 +18,4 @@ def get_max_and_ave(filename):
     print("ave:", sum_degree / len(G.nodes))
 
 
-get_max_and_ave("../dataset/HR_edges_ja.csv")
+get_max_and_ave("../dataset/emailWeightJa.csv")

@@ -24,17 +24,17 @@ def get_next_node(graph, current_node):
     neighbors = list(graph.neighbors(current_node))
     if not neighbors:
         return None
-    # 计算总权重
-    total_score = 0
+    # 计算邻居结点的总度数
+    total_degree = 0
     for neighbor in neighbors:
-        total_score += graph[current_node][neighbor]['weight']
+        total_degree += nx.degree(graph, neighbor)
         # total_score += graph[current_node][neighbor]['weight'] * 0.5 + graph.degree(neighbor) * 0.5
     # 根据总得分计算概率
     probabilities = []
     for neighbor in neighbors:
-        score = graph[current_node][neighbor]['weight']
+        score = nx.degree(graph, neighbor)
         # score = graph[current_node][neighbor]['weight'] * 0.5 + graph.degree(neighbor) * 0.5
-        probabilities.append(score / total_score)
+        probabilities.append(score / total_degree)
     next_node = random.choices(neighbors, weights=probabilities)[0]
     return next_node
 
@@ -101,7 +101,7 @@ def get_result(G, start_node, size):
 
 
 # 示例
-Glist = fileHandle.csvResolve("../dataset/facebook.csv")
+Glist = fileHandle.csvResolve("../dataset/wiki-vote.csv")
 # Glist = [(1, 2, 1), (1, 4, 4), (1, 5, 2), (1, 6, 1), (2, 3, 2),
 #          (2, 4, 5), (2, 6, 2), (3, 4, 3), (3, 5, 3), (4, 5, 3), (5, 6, 4)]
 G = nx.Graph()
@@ -112,20 +112,19 @@ for i in list(G.nodes):
     nodes_weights.append((i, {'node_weight': 0}))
 G.add_nodes_from(nodes_weights)
 size = 6  # 社区大小
-walk_length = size * 1
+walk_length = size * 2
 # start_node = 1
 times = 1000  # 随机游走次数
 # facebook
-nodes = [715, 751, 430, 436, 1026, 1339, 2203, 2336, 0]
+# nodes = [715, 751, 430, 436, 1026, 1339, 2203, 2336, 0]
 # wiki-vote
-# nodes = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
+nodes = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
 # bitcoin
 # nodes = [3, 4553, 4683, 1860, 3598, 3744, 2942, 546, 1018, 905]
 inf = 0
 total_time = 0
 total_degree = 0
 iterations = [500, 1000, 2000, 5000, 10000]
-
 length = len(nodes)
 for iteration in iterations:
     inf = 0
