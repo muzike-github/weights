@@ -90,11 +90,14 @@ def paint_by_graph(G):
     plt.show()
 
 
-filename = "../dataset/wiki-vote.csv"
+filename = "../dataset/wiki-vote_random.csv"
 Glist = fh.csvResolve(filename)
-
+# facebook
 # nodelist = [715, 751, 430, 436, 1026, 1339, 2203, 2336, 2244, 0]
-nodelist = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
+nodelist = [715, 751]
+# wikivote
+# nodelist = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
+# nodelist = [133, 7, 231, 3073]
 
 for querynode in nodelist:
     G = nx.Graph()
@@ -103,7 +106,7 @@ for querynode in nodelist:
     # paint_by_graph(G)
     start_time = time.time()
     # q = 1339
-    result = Greedy(G, querynode, 4)
+    result = Greedy(G, querynode, 8)
     end_time = time.time()
     print(result)
     print("runtime:", end_time - start_time)

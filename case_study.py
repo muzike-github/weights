@@ -4,6 +4,9 @@ import core.function as fun
 import core.fileHandle as fh
 import matplotlib.pyplot as plt
 import igraph as ig
+
+plt.rcParams.update({'font.size': 16})
+plt.rcParams['font.size'] = 20
 # 两个case study 的示例图
 Glist = fh.csvResolve('dataset/facebook.csv')
 G = nx.Graph()
@@ -19,7 +22,7 @@ def paint_case1_BRB(H):
 
     # 自定义节点颜色
     nodelist = {
-        'r': [414],
+        'orange': [414],
         'g': [436],
         '#237ab5': [683, 370, 373, 376, 395, 412, 423, 428]
     }
@@ -31,17 +34,18 @@ def paint_case1_BRB(H):
     # 画节点图
     for node_color, nodelist in nodelist.items():
         nx.draw_networkx_nodes(g2, pos, nodelist=nodelist,
-                               node_size=600,
+                               node_size=800,
                                node_color=node_color, label=True)
 
     # 画边
     nx.draw_networkx_edges(g2, pos, edgelist=weights.keys(), width=0.5, alpha=1)
     weights = filter(weights, 414)
     # # # 画边权重
-    nx.draw_networkx_edge_labels(g1, pos, edge_labels=weights)
-    nx.draw_networkx_labels(g1, pos, font_color='black')
+    nx.draw_networkx_edge_labels(g1, pos, edge_labels=weights,font_size=16)
+    nx.draw_networkx_labels(g1, pos, font_color='black',font_size=16)
     plt.box(False)
-    #plt.savefig("case1_BRB.svg", dpi=600, bbox_inches='tight')
+    plt.tight_layout(pad=0)
+    plt.savefig("case1_BRB.eps", dpi=600, bbox_inches='tight')
     plt.show()
 
 
@@ -54,7 +58,7 @@ def paint_case1_FPB(H):
     weights = nx.get_edge_attributes(g1, "weight")
     # 自定义节点颜色
     nodelist = {
-        'r': [506],  # 最小影响力节点
+        'orange': [506],  # 最小影响力节点
         'g': [436],  # 查询节点
         '#237ab5': [513, 524, 461, 559, 400, 561, 373, 438]
     }
@@ -65,17 +69,18 @@ def paint_case1_FPB(H):
     # # 画节点图
     for node_color, nodelist in nodelist.items():
         nx.draw_networkx_nodes(g1, pos, nodelist=nodelist,
-                               node_size=400,
+                               node_size=800,
                                node_color=node_color, label=True)
 
     # # 画边
-    nx.draw_networkx_edges(g1, pos, edgelist=list(weights.keys()), width=0.3, alpha=1)
+    nx.draw_networkx_edges(g1, pos, edgelist=list(weights.keys()), width=0.5, alpha=1)
     weights = filter(weights, 506)
     # 画边权重
-    nx.draw_networkx_edge_labels(g1, pos, edge_labels=weights)
-    nx.draw_networkx_labels(g1, pos, font_color='black')
+    nx.draw_networkx_edge_labels(g1, pos, edge_labels=weights,font_size=16)
+    nx.draw_networkx_labels(g1, pos, font_color='black',font_size=16)
     plt.box(False)
-    # plt.savefig("case1_FPB.svg", dpi=600, bbox_inches='tight')
+    plt.savefig("case1_FPB.eps", dpi=600, bbox_inches='tight')
+    plt.tight_layout(pad=0)
     plt.show()
 
 

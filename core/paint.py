@@ -5,7 +5,7 @@ from matplotlib.ticker import MultipleLocator
 '''
 数据可视化
 '''
-
+plt.rcParams['font.family'] = 'Times New Roman'
 
 # FPB算法和BRB算法 算法质量比对
 def algorithm_quality():
@@ -28,10 +28,10 @@ def algorithm_quality():
     plt.show()
 
 
-algorithm_quality()
+# algorithm_quality()
 
 def algorithm_quality_degree():
-    x_list = ['ssbo', 'FaceBook', 'Wiki-Vote', 'HR-edges']  # 横坐标，代表数据集
+    x_list = ['ssbo', 'FaceBook', 'WikiVote', 'HR-edges']  # 横坐标，代表数据集
     # y1 = [6, 4, 6, 3]  # FPB算法
     # y2 = [6, 6, 6, 4]  # BRB算法
     # y3 = [1, 3, 1, 1]  # GreedyF
@@ -53,7 +53,7 @@ def algorithm_quality_degree():
     # plt.savefig("algorithm_quality_degree.svg", dpi=300, bbox_inches='tight')
     plt.show()
 
-algorithm_quality_degree()
+# algorithm_quality_degree()
 
 # wiki-vote数据集算法效率对比
 def wiki_vote_efficiency():
@@ -136,7 +136,7 @@ def wiki_vote_different_strategy():
     plt.xlabel('size')
     plt.ylabel('runtime(s)')
     plt.yticks(y_tick)
-    plt.title("wiki-vote")
+    plt.title("wikiVote")
     plt.show()
 
 
@@ -174,7 +174,7 @@ def wiki_vote_nodeChoose_strategy():
     plt.yticks(y_tick)
     plt.xlabel('size')
     plt.ylabel('runtime(s)')
-    plt.title("wiki_vote")
+    plt.title("wikiVote")
     plt.show()
 
 # facebook_nodeChoose_strategy()

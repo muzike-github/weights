@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 
 '''
-数据可视化
+数据可视化(论文专用)
 '''
-
+plt.rcParams['font.family'] = 'Times New Roman'
 plt.rcParams['figure.figsize'] = (4, 3)
 plt.rcParams['xtick.labelsize'] = 18
 plt.rcParams['ytick.labelsize'] = 18
@@ -14,7 +14,7 @@ plt.rcParams['lines.markersize'] = 8
 
 # FPB算法和BRB算法 算法质量比对
 def algorithm_quality():
-    x_list = ['ssbo', 'FaceBook', 'Wiki-Vote', 'HR-edges']  # 横坐标，代表数据集
+    x_list = ['ssbo', 'FaceBook', 'WikiVote', 'HR-edges']  # 横坐标，代表数据集
     # x_list = ['SSBO', 'FB', 'WV', 'HR']  # 横坐标，代表数据集
     y1 = [0.69, 2.7, 0.69, 0.665]  # FPB算法
     y2 = [0.332, 1.5, 0.45, 0.311]  # BRB算法
@@ -40,7 +40,7 @@ def algorithm_quality():
 
 # FPB算法和BRB算法 算法质量比对(最小度)
 def algorithm_quality_degree():
-    x_list = ['ssbo', 'FaceBook', 'Wiki-Vote', 'HR-edges']  # 横坐标，代表数据集
+    x_list = ['ssbo', 'FaceBook', 'WikiVote', 'HR-edges']  # 横坐标，代表数据集
     # y1 = [6, 4, 6, 3]  # FPB算法
     # y2 = [6, 6, 6, 4]  # BRB算法
     # y3 = [1, 3, 1, 1]  # GreedyF
@@ -129,13 +129,13 @@ def facebook_nodeChoose_strategy():
     plt.semilogy(x_list, y1, '*-', alpha=0.5, linewidth=1, label='score', markersize='8')
     plt.semilogy(x_list, y2, '^-', alpha=0.5, linewidth=1, label='random', markersize='8')
     plt.semilogy(x_list, y3, '+-', alpha=0.5, linewidth=1, label='weight', markersize='8')
-    plt.legend(facecolor='none', markerscale=0.5, fontsize=14)
-    plt.xlabel('size', fontsize=18)
+    plt.legend(facecolor='none', markerscale=0.5, fontsize=16,frameon=False)
+    plt.xlabel('Community size', fontsize=18)
     plt.ylabel('runtime(s)', fontsize=18)
     plt.xticks(x_list, fontsize=18)
     plt.yticks(y_tick, fontsize=18)
     plt.title("Facebook", fontsize=18)
-    plt.savefig("facebook_nodeChoose_strategy.svg", dpi=300, bbox_inches='tight')
+    plt.savefig("facebook_nodeChoose_strategy.eps", dpi=300, bbox_inches='tight')
     plt.show()
 
 
@@ -152,13 +152,13 @@ def wiki_vote_nodeChoose_strategy():
     plt.semilogy(x_list, y1, '*-', alpha=0.5, linewidth=1, label='score', markersize='8')
     plt.semilogy(x_list, y2, '^-', alpha=0.5, linewidth=1, label='random', markersize='8')
     plt.semilogy(x_list, y3, '+-', alpha=0.5, linewidth=1, label='weight', markersize='8')
-    plt.legend(facecolor='none', markerscale=0.5, fontsize=14, loc='upper left')
+    plt.legend(facecolor='none', markerscale=0.5, fontsize=16, loc='upper left',frameon=False)
     plt.xticks(x_list, fontsize=18)
     plt.yticks(y_tick, fontsize=18)
-    plt.xlabel('size', fontsize=18)
+    plt.xlabel('Community size', fontsize=18)
     plt.ylabel('runtime(s)', fontsize=18)
-    plt.title("wiki-vote", fontsize=18)
-    plt.savefig("wiki_vote_nodeChoose_strategy.svg", dpi=300, bbox_inches='tight')
+    plt.title("wikiVote", fontsize=18)
+    plt.savefig("wiki_vote_nodeChoose_strategy.eps", dpi=300, bbox_inches='tight')
     plt.show()
 
 
@@ -178,13 +178,13 @@ def facebook_different_strategy():
     plt.semilogy(x_list, y2, '^-', alpha=0.5, linewidth=1, label='FPB\F', markersize='8')
     plt.semilogy(x_list, y3, '+-', alpha=0.5, linewidth=1, label='FPB\P', markersize='8')
     plt.semilogy(x_list, y4, 'v-', alpha=0.5, linewidth=1, label='FPB\B', markersize='8')
-    plt.legend(facecolor='none', markerscale=0.5, fontsize=11, loc='upper left')
-    plt.xlabel('size', fontsize=18)
+    plt.legend(facecolor='none', markerscale=0.5, fontsize=14, loc='upper left',frameon=False)
+    plt.xlabel('Community size', fontsize=18)
     plt.ylabel('runtime(s)', fontsize=18)
     plt.xticks(fontsize=18)
     plt.yticks(y_tick, fontsize=18)
     plt.title('Facebook', fontsize=18)
-    plt.savefig("facebook_different_strategy.svg", dpi=300, bbox_inches='tight')
+    plt.savefig("facebook_different_strategy.eps", dpi=300, bbox_inches='tight')
     plt.show()
 
 
@@ -202,12 +202,12 @@ def wiki_vote_different_strategy():
     plt.semilogy(x_list, y2, '^-', alpha=0.5, linewidth=1, label='FPB\F', markersize='8')
     plt.semilogy(x_list, y3, '+-', alpha=0.5, linewidth=1, label='FPB\P', markersize='8')
     plt.semilogy(x_list, y4, 'v-', alpha=0.5, linewidth=1, label='FPB\B', markersize='8')
-    plt.legend(facecolor='none', markerscale=0.5, fontsize=11, loc='lower right')
-    plt.xlabel('size', fontsize=18)
+    plt.legend(facecolor='none', markerscale=0.5, fontsize=12, loc='lower right',frameon=False)
+    plt.xlabel('Community size', fontsize=18)
     plt.ylabel('runtime(s)', fontsize=18)
     plt.yticks(y_tick)
     plt.title('Wiki-vote', fontsize=18)
-    plt.savefig("wiki_vote_different_strategy.svg", dpi=300, bbox_inches='tight')
+    plt.savefig("wiki_vote_different_strategy.eps", dpi=300, bbox_inches='tight')
     plt.show()
 
 # algorithm_quality()

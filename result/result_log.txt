@@ -382,3 +382,237 @@ nodes:7115	 edges:100762	 queryNode:1166
 min_influential:1.696
 time_consume:381.62985253334045
 min_degree:7
+=======2024-04-02_161056========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:715
+min_influential:3.087
+time_consume:551.7343022823334
+min_degree:5
+=======2024-04-02_161227========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:715
+min_influential:3.489
+time_consume:628.9380884170532
+min_degree:6
+=======2024-04-02_162059========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:751
+min_influential:3.269
+time_consume:603.4713118076324
+min_degree:4
+=======2024-04-02_162203========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:751
+min_influential:3.471
+time_consume:576.0710952281952
+min_degree:5
+=======2024-04-02_163134========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:430
+min_influential:3.529
+time_consume:634.471652507782
+min_degree:6
+=======2024-04-02_163228========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:430
+min_influential:4.062
+time_consume:625.0960130691528
+min_degree:7
+=======2024-04-02_163759========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:436
+min_influential:4.003
+time_consume:384.15705728530884
+min_degree:6
+=======2024-04-02_164021========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:436
+min_influential:4.6209999999999996
+time_consume:472.2418875694275
+min_degree:7
+=======2024-04-02_164624========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:1026
+min_influential:4.341
+time_consume:505.61302280426025
+min_degree:6
+=======2024-04-02_165252========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:1026
+min_influential:4.885
+time_consume:751.0976619720459
+min_degree:7
+=======2024-04-02_165327========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:1339
+min_influential:4.538
+time_consume:422.7661077976227
+min_degree:6
+=======2024-04-02_170707========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:1339
+min_influential:5.039000000000001
+time_consume:855.1471619606018
+min_degree:7
+=======2024-04-02_171741========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:715
+min_influential:2.776
+time_consume:687.2501788139343
+min_degree:5
+=======2024-04-02_171908========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:715
+min_influential:2.518
+time_consume:768.3858525753021
+min_degree:4
+=======2024-04-02_172106========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:715
+min_influential:2.0
+time_consume:881.3090970516205
+min_degree:3
+=======2024-04-02_172349========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:2203
+min_influential:4.96
+time_consume:1001.6639575958252
+min_degree:7
+=======2024-04-02_172808========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:751
+min_influential:2.798
+time_consume:627.0821526050568
+min_degree:4
+=======2024-04-02_173105========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:751
+min_influential:2.2809999999999997
+time_consume:716.6553444862366
+min_degree:3
+=======2024-04-02_173120========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:751
+min_influential:1.904
+time_consume:613.3297216892242
+min_degree:2
+=======2024-04-02_173525========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:430
+min_influential:3.2129999999999996
+time_consume:436.24350094795227
+min_degree:5
+=======2024-04-02_173754========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:430
+min_influential:2.165
+time_consume:394.2103226184845
+min_degree:3
+=======2024-04-02_173829========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:2336
+min_influential:5.279
+time_consume:879.6342399120331
+min_degree:7
+=======2024-04-02_173831========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:430
+min_influential:2.6229999999999998
+time_consume:446.06800866127014
+min_degree:4
+=======2024-04-02_174050========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:436
+min_influential:3.5580000000000003
+time_consume:324.56394720077515
+min_degree:5
+=======2024-04-02_174407========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:436
+min_influential:2.95
+time_consume:335.041118144989
+min_degree:4
+=======2024-04-02_174431========
+dataset:dataset/facebook_random.csv
+nodes:4039	 edges:88233	 queryNode:436
+min_influential:2.378
+time_consume:395.2865500450134
+min_degree:3
+=======2024-04-02_181243========
+dataset:dataset/wiki-vote_random.csv
+nodes:7115	 edges:100761	 queryNode:133
+min_influential:1.575
+time_consume:896.9412522315979
+min_degree:3
+=======2024-04-02_181734========
+dataset:dataset/wiki-vote_random.csv
+nodes:7115	 edges:100761	 queryNode:133
+min_influential:1.779
+time_consume:1191.902179479599
+min_degree:2
+=======2024-04-02_182015========
+dataset:dataset/wiki-vote_random.csv
+nodes:7115	 edges:100761	 queryNode:7
+min_influential:2.879
+time_consume:450.8713889122009
+min_degree:4
+=======2024-04-02_182402========
+dataset:dataset/wiki-vote_random.csv
+nodes:7115	 edges:100761	 queryNode:7
+min_influential:3.193
+time_consume:387.94319438934326
+min_degree:4
+=======2024-04-02_182451========
+dataset:dataset/wiki-vote_random.csv
+nodes:7115	 edges:100761	 queryNode:133
+min_influential:1.9769999999999999
+time_consume:1635.0059456825256
+min_degree:3
+=======2024-04-02_185505========
+dataset:dataset/wiki-vote_random.csv
+nodes:7115	 edges:100761	 queryNode:7
+min_influential:3.551
+time_consume:1813.9395961761475
+min_degree:5
+=======2024-04-02_191342========
+dataset:dataset/wiki-vote_random.csv
+nodes:7115	 edges:100761	 queryNode:133
+min_influential:1.575
+time_consume:765.0652554035187
+min_degree:2
+=======2024-04-02_191545========
+dataset:dataset/wiki-vote_random.csv
+nodes:7115	 edges:100761	 queryNode:133
+min_influential:1.361
+time_consume:884.8814401626587
+min_degree:2
+=======2024-04-02_191612========
+dataset:dataset/wiki-vote_random.csv
+nodes:7115	 edges:100761	 queryNode:7
+min_influential:2.578
+time_consume:150.26472234725952
+min_degree:3
+=======2024-04-02_191614========
+dataset:dataset/wiki-vote_random.csv
+nodes:7115	 edges:100761	 queryNode:7
+min_influential:2.2110000000000003
+time_consume:28.725709199905396
+min_degree:3
+=======2024-04-02_191840========
+dataset:dataset/wiki-vote_random.csv
+nodes:7115	 edges:100761	 queryNode:231
+min_influential:2.165
+time_consume:145.4707670211792
+min_degree:3
+=======2024-04-02_191954========
+dataset:dataset/wiki-vote_random.csv
+nodes:7115	 edges:100761	 queryNode:3073
+min_influential:2.49
+time_consume:73.80303573608398
+min_degree:3
+=======2024-04-02_200838========
+dataset:dataset/wiki-vote_random.csv
+nodes:7115	 edges:100761	 queryNode:231
+min_influential:3.277
+time_consume:4412.2613916397095
+min_degree:4
