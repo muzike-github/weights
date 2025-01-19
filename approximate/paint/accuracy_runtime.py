@@ -32,7 +32,7 @@ ax1.plot(categories, dataF_100, marker='+', label='100', linestyle='-')
 ax1.plot(categories, dataF_300, marker='^', label='300', linestyle='-')
 ax1.plot(categories, dataF_500, marker='*', label='500', linestyle='-')
 ax1.plot(categories, dataF_1000, marker='o', label='1000', linestyle='-')
-
+ax1.plot(categories, dataF_2000, marker='v', label='2000', linestyle='-')
 
 # 设置第一个子图标题和标签
 ax1.set_title('(a) Facebook',fontsize = 12)

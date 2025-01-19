@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import fileHandle as fh
 import function as fc
 
+
 def get_distance(G, q, v):
     dis = nx.shortest_path_length(G, v, q)
     dis = pow(dis, 2)
@@ -19,7 +20,7 @@ def greedy_F(G, q):
     # print(list(nx.neighbors(G,q)))
     for u in nx.neighbors(G, q):
         dic[u] = get_distance(G, q, u)
-    largest_dic = heapq.nlargest(size-1, dic)
+    largest_dic = heapq.nlargest(size - 1, dic)
     return list(largest_dic)
 
 

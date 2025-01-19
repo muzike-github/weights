@@ -127,8 +127,10 @@ lastfm:81
 # nodes=[176,256,238,25,135,7]
 # wiki
 # nodes = [133, 7, 231, 3073, 25, 1489, 1137, 6596, 813, 1166]
+nodes = [133, 7, 231, 3073]
 # facebook
-nodes = [715,751,430,436,1026,1339,2203,2336,2244,0]
+# nodes = [715, 751, 430, 436, 1026, 1339, 2203, 2336, 2244, 0]
+# nodes = [715, 751, 430, 436]
 if __name__ == '__main__':
     for node in nodes:
         # q = eval(input("查询节点:"))  # 查询节点和社区大小
@@ -136,7 +138,7 @@ if __name__ == '__main__':
         query_node = node
         H = []
         weight_min = 0
-        filename = "dataset/facebook.csv"
+        filename = "dataset/wiki-vote_random.csv"
         Glist = fh.csvResolve(filename)
         # Glist = node_list
         G = nx.Graph()
