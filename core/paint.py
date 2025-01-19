@@ -113,7 +113,7 @@ def facebook_different_strategy():
     plt.xlabel('size')
     plt.ylabel('runtime(s)')
     plt.yticks(y_tick)
-    plt.title("facebook")
+    plt.title("Facebook")
     plt.show()
 
 
@@ -136,7 +136,7 @@ def wiki_vote_different_strategy():
     plt.xlabel('size')
     plt.ylabel('runtime(s)')
     plt.yticks(y_tick)
-    plt.title("wiki-vote")
+    plt.title("wikiVote")
     plt.show()
 
 
@@ -155,7 +155,7 @@ def facebook_nodeChoose_strategy():
     plt.xlabel('size')
     plt.ylabel('runtime(s)')
     plt.yticks(y_tick)
-    plt.title("facebook")
+    plt.title("Facebook")
     plt.show()
 
 
@@ -174,7 +174,7 @@ def wiki_vote_nodeChoose_strategy():
     plt.yticks(y_tick)
     plt.xlabel('size')
     plt.ylabel('runtime(s)')
-    plt.title("wiki_vote")
+    plt.title("WikiVote")
     plt.show()
 
 # facebook_nodeChoose_strategy()

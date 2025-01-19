@@ -8,8 +8,9 @@ import igraph as ig
 Glist = fh.csvResolve('dataset/facebook.csv')
 G = nx.Graph()
 G.add_weighted_edges_from(Glist)
-
-
+# 设置图片大小
+plt.rcParams['figure.figsize'] = (8,5)
+plt.rcParams['font.family'] = 'Times New Roman'
 def paint_case1_BRB(H):
     g1 = nx.subgraph(G, H)
     # 生成节点位置序列（）
@@ -35,13 +36,13 @@ def paint_case1_BRB(H):
                                node_color=node_color, label=True)
 
     # 画边
-    nx.draw_networkx_edges(g2, pos, edgelist=weights.keys(), width=0.5, alpha=1)
+    nx.draw_networkx_edges(g2, pos, edgelist=weights.keys(), width=0.3, alpha=1)
     weights = filter(weights, 414)
     # # # 画边权重
     nx.draw_networkx_edge_labels(g1, pos, edge_labels=weights)
     nx.draw_networkx_labels(g1, pos, font_color='black')
     plt.box(False)
-    #plt.savefig("case1_BRB.svg", dpi=600, bbox_inches='tight')
+    plt.savefig("case1_BRB.pdf", dpi=600, bbox_inches='tight')
     plt.show()
 
 
@@ -65,7 +66,7 @@ def paint_case1_FPB(H):
     # # 画节点图
     for node_color, nodelist in nodelist.items():
         nx.draw_networkx_nodes(g1, pos, nodelist=nodelist,
-                               node_size=400,
+                               node_size=600,
                                node_color=node_color, label=True)
 
     # # 画边
@@ -75,7 +76,7 @@ def paint_case1_FPB(H):
     nx.draw_networkx_edge_labels(g1, pos, edge_labels=weights)
     nx.draw_networkx_labels(g1, pos, font_color='black')
     plt.box(False)
-    # plt.savefig("case1_FPB.svg", dpi=600, bbox_inches='tight')
+    plt.savefig("case1_FPB.pdf", dpi=600, bbox_inches='tight')
     plt.show()
 
 
@@ -92,7 +93,7 @@ def get_min_weight(G, H):
     sorted(dic.items(), key=lambda x: x[0], reverse=False)
     return dic
 
-
+# 过滤多余边
 def filter(weights, node):
     del_list = []
     for w in weights.keys():
